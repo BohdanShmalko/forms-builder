@@ -1,0 +1,26 @@
+<div class="formContainer" >
+  <mat-card [formGroup]="loginForm">
+
+    <mat-card-header>
+      <mat-card-title>Login Form</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field appearance="fill" class="formGroup">
+      <mat-label>Login</mat-label>
+      <input formControlName="login" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="formGroup">
+      <mat-label>Password</mat-label>
+      <input type="password" formControlName="password" matInput >
+    </mat-form-field>
+
+    <div *ngIf="!!errorMessage" class="serverErrorMessage">
+      <p>{{errorMessage}}</p>
+    </div>
+
+    <button [disabled]="loginForm.invalid" (click)="sendDataToServer()" mat-raised-button color="warn">Login</button>
+
+  </mat-card>
+</div>
+
