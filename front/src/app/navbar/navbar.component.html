@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <div>
+    <mat-icon>book</mat-icon>
+    <span>FormBuilder</span>
+  </div>
+
+  <div class="spacer"></div>
+
+  <a mat-button routerLink="formbuilder">Form builder</a>
+
+  <div *ngIf="isReqUser ; else notRegistered">
+    <a mat-button routerLink="userpage">My page</a>
+    <a mat-raised-button color="warn" routerLink="login">Logout</a>
+  </div>
+
+
+  <ng-template #notRegistered>
+    <a mat-button routerLink="registration">Registration</a>
+    <a mat-raised-button color="warn" routerLink="login">Login</a>
+  </ng-template>
+
+</mat-toolbar>
