@@ -1,5 +1,5 @@
 <div class="formContainer">
-  <mat-card [formGroup]="loginForm">
+  <mat-card [formGroup]="registrationForm">
 
     <mat-card-header>
       <mat-card-title>Registration Form</mat-card-title>
@@ -8,23 +8,30 @@
     <mat-form-field appearance="fill" class="formGroup">
       <mat-label>Login</mat-label>
       <input formControlName="login" matInput>
+      <mat-error *ngIf="login.touched && login.errors?.required">The field must not be empty</mat-error>
+      <mat-error *ngIf="login.errors?.minlength">Login is too small</mat-error>
+      <mat-error *ngIf="login.errors?.maxlength">Login is too large</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="formGroup">
       <mat-label>Password</mat-label>
       <input type="password" formControlName="password" matInput>
+      <mat-error *ngIf="password.touched && password.errors?.required">The field must not be empty</mat-error>
+      <mat-error *ngIf="password.errors?.minlength">Password is too small</mat-error>
+      <mat-error *ngIf="password.errors?.maxlength">Password is too large</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="formGroup">
       <mat-label>Re-password</mat-label>
-      <input type="password" formControlName="rePassword" matInput>
+      <input [errorStateMatcher]="rePasswordErrorManager" type="password" formControlName="rePassword" matInput>
+      <mat-error *ngIf="rePassword.touched && registrationForm.errors?.mismatch">Re-password is incorrect</mat-error>
     </mat-form-field>
 
-    <div *ngIf="!!errorMessage" class="serverErrorMessage">
-      <p>{{errorMessage}}</p>
+    <div class="serverErrorMessage">
+      <p>{{serverErrorMessage | async}}</p>
     </div>
 
-    <button [disabled]="loginForm.invalid" (click)="sendDataToServer()" mat-raised-button color="warn">Registration
+    <button [disabled]="registrationForm.invalid" (click)="sendDataToServer()" mat-raised-button color="warn">Registration
     </button>
 
   </mat-card>

@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {AuthUnloginGuard} from "./shared/auth/auth-unlogin.guard";
 
 const routes: Routes = [{
   path: '', redirectTo: '/formbuilder', pathMatch: 'full'
@@ -12,7 +13,9 @@ const routes: Routes = [{
   path: 'registration',
   loadChildren: () => import('./registration/registration.module').then(m => m.RegistrationModule)
 }, {
-  path: 'userpage', loadChildren: () => import('./user-page/user-page.module').then(m => m.UserPageModule)
+  path: 'userpage',
+  loadChildren: () => import('./user-page/user-page.module').then(m => m.UserPageModule),
+  canActivate: [AuthUnloginGuard]
 }, {path: '**', component: PageNotFoundComponent}];
 
 @NgModule({

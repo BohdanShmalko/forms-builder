@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {select, Store} from "@ngrx/store";
+import {AuthState} from "../reducers/auth/auth.reducers";
+import {Observable} from "rxjs";
+import {selectIsAuth} from "../reducers/auth/auth.selector";
+import {LogoutAction, LogoutAndDeleteTokenAction} from "../reducers/auth/auth.actions";
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store$: Store<AuthState>) {
+  }
 
-  isReqUser = false
+  isReqUser$: Observable<boolean> = this.store$.pipe(select(selectIsAuth))
+
+  logout() {
+    this.store$.dispatch(new LogoutAndDeleteTokenAction())
+  }
 
   ngOnInit(): void {
   }

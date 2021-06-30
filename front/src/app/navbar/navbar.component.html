@@ -8,9 +8,9 @@
 
   <a mat-button routerLink="formbuilder">Form builder</a>
 
-  <div *ngIf="isReqUser ; else notRegistered">
+  <div *ngIf="isReqUser$ | async ; else notRegistered">
     <a mat-button routerLink="userpage">My page</a>
-    <a mat-raised-button color="warn" routerLink="login">Logout</a>
+    <a mat-raised-button color="warn" routerLink="login" (click)="logout()">Logout</a>
   </div>
 
 
