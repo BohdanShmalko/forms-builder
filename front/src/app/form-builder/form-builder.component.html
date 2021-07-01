@@ -1,1 +1,68 @@
-<p>form-builder works!</p>
+<div class="mainContainer">
+  <div cdkDropListGroup>
+    <div class="external-container">
+      <div class="block-container">
+        <h2>Elements</h2>
+
+        <div
+          cdkDropList
+          [cdkDropListData]="done"
+          class="list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="box" *ngFor="let item of done" cdkDrag>
+            <div class="my-custom-placeholder" *cdkDragPlaceholder></div>
+            <ng-template [cdkPortalOutlet]="item"></ng-template>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="block-container">
+        <h2>Change style</h2>
+
+        <div
+          cdkDropList
+          [cdkDropListData]="styled"
+          class="list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="box" *ngFor="let item of styled" cdkDrag>
+            <div class="my-custom-placeholder" *cdkDragPlaceholder></div>
+            <ng-template [cdkPortalOutlet]="item"></ng-template>
+          </div>
+        </div>
+      </div>
+
+      <div class="block-container">
+        <h2>Styles</h2>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<ng-template #myButtonTemplate>
+  <button>click me</button>
+</ng-template>
+
+<ng-template #myTextareaTemplate>
+  <textarea></textarea>
+</ng-template>
+
+<ng-template #myCheckboxTemplate>
+  <div>
+    <input type="checkbox" id="test-checkbox" name="scales">
+    <label for="test-checkbox">Test box</label>
+  </div>
+</ng-template>
+
+<ng-template #myInputTemplate>
+  <input>
+</ng-template>
+
+<ng-template #mySelectTemplate>
+  <select>
+    <option>Пункт 1</option>
+    <option>Пункт 2</option>
+  </select>
+</ng-template>

@@ -3,6 +3,12 @@ import {UserInf, UserPageService} from "./user-page.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {AuthService} from "../shared/auth/auth.service";
+import {select, Store} from "@ngrx/store";
+import {AuthState} from "../reducers/auth/auth.reducers";
+import {CheckValidTokenAction} from "../reducers/auth/auth.actions";
+import {NotAuthCheck} from "../shared/auth/not-auth";
+import {selectUserData} from "../reducers/user/user.selector";
+import {GetUserDataAction} from "../reducers/user/user.actions";
 
 @Component({
   selector: 'app-user-page',
@@ -11,24 +17,14 @@ import {AuthService} from "../shared/auth/auth.service";
 })
 export class UserPageComponent implements OnInit {
 
-  constructor(private userPageService: UserPageService, private authService: AuthService, private _router: Router) {
+  constructor(private store$: Store<AuthState>) {
   }
 
-  userData ?: UserInf
+  userData = this.store$.pipe(select(selectUserData))
 
   ngOnInit(): void {
-    this.userPageService.getUserInf().subscribe((data) => {
-      this.userData = data
-    }, err => {
-      if (err instanceof HttpErrorResponse) {
-        if (err.status === 401) {
-          this._router.navigate(['/login'])
-          this.authService.logoutUser()
-        } else {
-          console.log(err)
-        }
-      }
-    })
+    this.store$.dispatch(new CheckValidTokenAction())
+    this.store$.dispatch(new GetUserDataAction())
   }
 
 }
