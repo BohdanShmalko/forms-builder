@@ -8,9 +8,10 @@ import {
   SetLoginErrorAction,
   SetRegistrationErrorAction
 } from "./auth.actions";
-import {catchError, map, mergeMap, switchMap, takeWhile} from 'rxjs/operators';
+import {catchError, map, mergeMap, switchMap, take, takeWhile, tap} from 'rxjs/operators';
 import {of} from "rxjs";
 import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable()
 export class AuthEffects {
@@ -58,4 +59,33 @@ export class AuthEffects {
     takeWhile(() => this.authService.isLoggedIn),
     switchMap(() => of(new LoginAction()))
   ))
+
+  checkValidToken$ = createEffect(() => this.actions$.pipe(
+    ofType(authActionsType.checkValidToken),
+    mergeMap(() => this.authService.checkValidToken().pipe(
+      map(() => {
+        return new LoginAction()
+      }),
+      catchError((err) => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) {
+            this.router.navigate(['/login'])
+            this.authService.logoutUser()
+          }
+        }
+        return of(err).pipe(
+          tap(err => {
+            console.log(err)
+          })
+        )
+      })
+    )),
+  ))
+
+  // checkAuthError$ = createEffect(() => this.actions$.pipe(
+  //   ofType(authActionsType.checkAuthToken),
+  //   switchMap((err) => {
+  //     return of(err)
+  //   })
+  // ))
 }

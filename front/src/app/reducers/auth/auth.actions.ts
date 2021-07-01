@@ -9,7 +9,8 @@ export enum authActionsType {
   setLoginError = '[AUTH] set login error',
   setRegistrationError = '[AUTH] set registration error',
   checkAuth = '[AUTH] check auth',
-  logoutAndDeleteToken = '[AUTH] logout and delete'
+  logoutAndDeleteToken = '[AUTH] logout and delete',
+  checkValidToken = '[AUTH] check valid token'
 }
 
 export class LogoutAction implements Action {
@@ -56,6 +57,10 @@ export class LogoutAndDeleteTokenAction implements Action {
   readonly type = authActionsType.logoutAndDeleteToken
 }
 
+export class CheckValidTokenAction implements Action {
+  readonly type = authActionsType.checkValidToken
+}
+
 export type AuthActions =
   LoginAction
   | LogoutAction
@@ -65,3 +70,4 @@ export type AuthActions =
   | SetRegistrationErrorAction
   | CheckAuthAction
   | LogoutAndDeleteTokenAction
+  | CheckValidTokenAction

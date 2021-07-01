@@ -63,9 +63,13 @@ router.post('/login', async (req, res) => {
     res.send({token})
 })
 
-router.get('/getinf', verifyToken, async (req, res) => {
+router.get('/getinf', verifyToken, (req, res) => {
     //send data
     res.send({data: {message: "some user data"}})
+})
+
+router.get('/check/token', verifyToken, (req, res) => {
+    res.send({isValidToken : true})
 })
 
 module.exports = router;
