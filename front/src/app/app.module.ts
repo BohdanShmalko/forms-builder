@@ -16,12 +16,13 @@ import {environment} from '../environments/environment';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {effects, reducers} from "./reducers";
 import {ReactiveComponentModule} from "@ngrx/component";
+import {ValidationErrorPipe} from "./shared/pipes/validation-error.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     routerComponents,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,7 @@ import {ReactiveComponentModule} from "@ngrx/component";
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     StoreRouterConnectingModule.forRoot(),
-    ReactiveComponentModule
+    ReactiveComponentModule,
   ],
   providers: [AuthUnloginGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],

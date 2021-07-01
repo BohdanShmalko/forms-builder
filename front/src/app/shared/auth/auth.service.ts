@@ -12,6 +12,10 @@ export interface Token {
   token: string
 }
 
+export interface TokenValidation {
+  isValidToken: boolean
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +24,7 @@ export class AuthService {
   private _basicURL = 'http://localhost:3001/user/'
   private _registrationURL = this._basicURL + 'new'
   private _loginURL = this._basicURL + 'login'
+  private _checkTokenURL = this._basicURL + 'check/token'
   private _TOKEN = 'token'
 
   constructor(private http: HttpClient) {
@@ -31,6 +36,10 @@ export class AuthService {
 
   loginUser(user: UserAuth): Observable<Token> {
     return this.http.post<Token>(this._loginURL, user)
+  }
+
+  checkValidToken(): Observable<TokenValidation> {
+    return this.http.get<TokenValidation>(this._checkTokenURL)
   }
 
   storeToken(token: string) {

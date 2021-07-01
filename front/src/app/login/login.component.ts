@@ -14,13 +14,19 @@ const standardValidators = [Validators.required, Validators.minLength(3), Valida
 })
 export class LoginComponent implements OnInit {
 
+  loginForm: any
+
   constructor(private fb: FormBuilder, private storage$: Store<AuthState>) {
   }
 
-  loginForm = this.fb.group({
-    login: ['', [...standardValidators]],
-    password: ['', [...standardValidators]]
-  })
+  get login() {
+    return this.loginForm.get('login')
+  }
+
+  get password() {
+    return this.loginForm.get('password')
+  }
+
 
   errorMessage$ = this.storage$.pipe(select(selectLoginError))
 
@@ -29,6 +35,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      login: ['', [...standardValidators]],
+      password: ['', [...standardValidators]]
+    })
   }
 
 }

@@ -1,12 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
-import {AuthService} from "../shared/auth/auth.service";
-import {Router} from "@angular/router";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {PasswordValidator} from "./password.validator";
 import {ErrorStateMatcher} from "@angular/material/core";
 import {select, Store} from "@ngrx/store";
 import {AuthState} from "../reducers/auth/auth.reducers";
-import {LoginAction, SendRegistrationAction} from "../reducers/auth/auth.actions";
+import {SendRegistrationAction} from "../reducers/auth/auth.actions";
 import {selectRegistrationError} from "../reducers/auth/auth.selector";
 
 const standardValidators = [Validators.required, Validators.minLength(3), Validators.maxLength(50)]

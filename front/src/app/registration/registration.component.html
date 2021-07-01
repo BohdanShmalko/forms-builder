@@ -8,17 +8,17 @@
     <mat-form-field appearance="fill" class="formGroup">
       <mat-label>Login</mat-label>
       <input formControlName="login" matInput>
-      <mat-error *ngIf="login.touched && login.errors?.required">The field must not be empty</mat-error>
-      <mat-error *ngIf="login.errors?.minlength">Login is too small</mat-error>
-      <mat-error *ngIf="login.errors?.maxlength">Login is too large</mat-error>
+      <mat-error *ngIf="login.touched && login.errors?.required">{{'Login' | validation: 'empty'}}</mat-error>
+      <mat-error *ngIf="login.errors?.minlength">{{'Login' | validation: 'min-length'}}</mat-error>
+      <mat-error *ngIf="login.errors?.maxlength">{{'Login' | validation: 'max-length'}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="formGroup">
       <mat-label>Password</mat-label>
       <input type="password" formControlName="password" matInput>
-      <mat-error *ngIf="password.touched && password.errors?.required">The field must not be empty</mat-error>
-      <mat-error *ngIf="password.errors?.minlength">Password is too small</mat-error>
-      <mat-error *ngIf="password.errors?.maxlength">Password is too large</mat-error>
+      <mat-error *ngIf="password.touched && password.errors?.required">{{'Password' | validation: 'empty'}}</mat-error>
+      <mat-error *ngIf="password.errors?.minlength">{{'Password' | validation: 'min-length'}}</mat-error>
+      <mat-error *ngIf="password.errors?.maxlength">{{'Password' | validation: 'max-length'}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="formGroup">
@@ -31,7 +31,8 @@
       <p>{{serverErrorMessage | async}}</p>
     </div>
 
-    <button [disabled]="registrationForm.invalid" (click)="sendDataToServer()" mat-raised-button color="warn">Registration
+    <button [disabled]="registrationForm.invalid" (click)="sendDataToServer()" mat-raised-button color="warn">
+      Registration
     </button>
 
   </mat-card>
