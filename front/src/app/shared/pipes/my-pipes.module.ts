@@ -1,14 +1,14 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import {ValidationErrorPipe} from './validation-error.pipe';
+import { ValidationErrorPipe } from './validation-error.pipe';
 
-export type MyPipesType = (typeof ValidationErrorPipe)[];
+export type MyPipesType = ( typeof ValidationErrorPipe )[];
 
-const myPipes: MyPipesType = [ValidationErrorPipe];
+const myPipes: MyPipesType = [ ValidationErrorPipe ];
 
 @NgModule({
-  declarations: [myPipes],
-  exports: [myPipes]
+  declarations: [ myPipes ],
+  exports: [ myPipes ]
 })
 export class MyPipesModule {
 }

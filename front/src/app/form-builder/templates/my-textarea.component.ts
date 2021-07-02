@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {Styles} from '../form-builder.component';
+import { Component, Input } from '@angular/core';
+import { Styles } from '../form-builder.component';
 
 @Component({
   selector: 'app-my-textarea',

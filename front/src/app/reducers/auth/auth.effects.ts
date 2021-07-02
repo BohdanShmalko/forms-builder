@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {catchError, map, mergeMap, switchMap, takeWhile, tap} from 'rxjs/operators';
-import {Observable, of} from 'rxjs';
-import {Router} from '@angular/router';
-import {HttpErrorResponse} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, map, mergeMap, switchMap, takeWhile, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
-import {AuthService} from '../../shared/auth/auth.service';
+import { AuthService } from '../../shared/auth/auth.service';
 import {
   authActionsType,
   LoginAction,
@@ -20,10 +20,10 @@ export class AuthEffects {
   private loginUser$: Observable<LoginAction | SetLoginErrorAction> = createEffect(() =>
     this.actions$.pipe(
       ofType(authActionsType.sendLogin),
-      mergeMap(({payload}) => this.authService.loginUser(payload).pipe(
-        map(({token}) => {
-          this.authService.storeToken(token)
-          this.router.navigate(['/userpage'])
+      mergeMap(({ payload }) => this.authService.loginUser(payload).pipe(
+        map(({ token }) => {
+          this.authService.storeToken( token )
+          this.router.navigate([ '/userpage' ])
           return new LoginAction()
         }),
         catchError(({error: {message}}) => of(new SetLoginErrorAction({message})))

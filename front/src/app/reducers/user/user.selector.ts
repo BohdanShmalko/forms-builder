@@ -1,6 +1,6 @@
-import {createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSelector} from '@ngrx/store';
+import { createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSelector } from '@ngrx/store';
 
-import {userNode, UserState} from './user.reducers';
+import { userNode, UserState } from './user.reducers';
 
 export type UserFeatureType = MemoizedSelector<object, UserState, DefaultProjectorFn<UserState>>
 export type UserDataSelectorType = MemoizedSelector<object, string, DefaultProjectorFn<string>>
