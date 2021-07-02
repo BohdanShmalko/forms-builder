@@ -1,39 +1,19 @@
 <div class="mainContainer">
   <div cdkDropListGroup>
     <div class="external-container">
+
       <div class="block-container">
-        <h2>Elements</h2>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="done"
-          class="list"
-          (cdkDropListDropped)="drop($event)">
-          <div class="box" *ngFor="let item of done" cdkDrag>
-            <div class="my-custom-placeholder" *cdkDragPlaceholder></div>
-            <ng-template [cdkPortalOutlet]="item"></ng-template>
-          </div>
-
-        </div>
+        <app-elements [done]="done" (doneEvent)="drop($event)"></app-elements>
       </div>
 
       <div class="block-container">
-        <h2>Change style</h2>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="styled"
-          class="list"
-          (cdkDropListDropped)="drop($event)">
-          <div class="box" *ngFor="let item of styled" cdkDrag>
-            <div class="my-custom-placeholder" *cdkDragPlaceholder></div>
-            <ng-template [cdkPortalOutlet]="item"></ng-template>
-          </div>
-        </div>
+        <app-change-styles
+          (dropEvent)="drop($event)" (setItemEvent)="setCurrentItem($event)" [styled]="styled">
+        </app-change-styles>
       </div>
 
       <div class="block-container">
-        <h2>Styles</h2>
+        <app-styles [currentElement]="currentElement"></app-styles>
       </div>
 
     </div>
@@ -42,27 +22,21 @@
 
 
 <ng-template #myButtonTemplate>
-  <button>click me</button>
+  <app-my-button [styles]="buttonData.styles"></app-my-button>
 </ng-template>
 
 <ng-template #myTextareaTemplate>
-  <textarea></textarea>
+  <app-my-textarea [styles]="textareaData.styles" [placeholder]="textareaData.placeholder"></app-my-textarea>
 </ng-template>
 
 <ng-template #myCheckboxTemplate>
-  <div>
-    <input type="checkbox" id="test-checkbox" name="scales">
-    <label for="test-checkbox">Test box</label>
-  </div>
+  <app-my-checkbox [styles]="checkboxData.styles"></app-my-checkbox>
 </ng-template>
 
 <ng-template #myInputTemplate>
-  <input>
+  <app-my-input [styles]="inputData.styles" [placeholder]="inputData.placeholder"></app-my-input>
 </ng-template>
 
 <ng-template #mySelectTemplate>
-  <select>
-    <option>Пункт 1</option>
-    <option>Пункт 2</option>
-  </select>
+  <app-my-select [styles]="selectData.styles"></app-my-select>
 </ng-template>
