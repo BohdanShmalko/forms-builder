@@ -1,0 +1,15 @@
+<h2>Elements</h2>
+
+<div
+  cdkDropList
+  [cdkDropListData]="done"
+  class="list"
+  (cdkDropListDropped)="toParent($event)">
+  <div class="box" *ngFor="let item of done" cdkDrag>
+    <div class="my-custom-placeholder" *cdkDragPlaceholder></div>
+    <div>
+      <ng-template [cdkPortalOutlet]="item.item"></ng-template>
+    </div>
+  </div>
+
+</div>

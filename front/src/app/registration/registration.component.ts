@@ -1,18 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
-import {PasswordValidator} from "./password.validator";
-import {ErrorStateMatcher} from "@angular/material/core";
-import {select, Store} from "@ngrx/store";
-import {AuthState} from "../reducers/auth/auth.reducers";
-import {SendRegistrationAction} from "../reducers/auth/auth.actions";
-import {selectRegistrationError} from "../reducers/auth/auth.selector";
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {select, Store} from '@ngrx/store';
 
-const standardValidators = [Validators.required, Validators.minLength(3), Validators.maxLength(50)]
+import {AuthState} from '../reducers/auth/auth.reducers';
+import {SendRegistrationAction} from '../reducers/auth/auth.actions';
+import {selectRegistrationError} from '../reducers/auth/auth.selector';
+import {PasswordValidator} from '../shared/validation/password.validator';
+import {standardValidators} from '../shared/validation/standard';
 
 class RePasswordErrorManager implements ErrorStateMatcher {
   isErrorState(control: FormControl): boolean {
-    const isHasError = control.touched && control.errors?.mismatch
-    return isHasError
+    return control.touched && control.errors?.mismatch;
   }
 }
 
@@ -21,40 +20,39 @@ class RePasswordErrorManager implements ErrorStateMatcher {
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent {
 
-  registrationForm: any;
+  public serverErrorMessage$ = this.storage$.pipe(select(selectRegistrationError))
+
+  public registrationForm: FormGroup = this.fb.group({
+    login: ['', [...standardValidators]],
+    password: ['', [...standardValidators]],
+    rePassword: ['']
+  }, {validators: PasswordValidator});
+
+  public rePasswordErrorManager = new RePasswordErrorManager()
+
+  public get login(): FormControl {
+    //@ts-ignore
+    return this.registrationForm.get('login')
+  }
+
+  public get password(): FormControl {
+    //@ts-ignore
+    return this.registrationForm.get('password')
+  }
+
+  public get rePassword(): FormControl {
+    //@ts-ignore
+    return this.registrationForm.get('rePassword')
+  }
 
   constructor(private fb: FormBuilder,
               private storage$: Store<AuthState>) {
   }
 
-  serverErrorMessage = this.storage$.pipe(select(selectRegistrationError))
-
-  get login() {
-    return this.registrationForm.get('login')
-  }
-
-  get password() {
-    return this.registrationForm.get('password')
-  }
-
-  get rePassword() {
-    return this.registrationForm.get('rePassword')
-  }
-
-  rePasswordErrorManager = new RePasswordErrorManager()
-
-  sendDataToServer() {
+  public sendDataToServer() {
     this.storage$.dispatch(new SendRegistrationAction(this.registrationForm.value))
-  }
-
-  ngOnInit(): void {
-    this.registrationForm = this.fb.group({
-      login: ['', [...standardValidators]],
-      password: ['', [...standardValidators]],
-      rePassword: ['']
-    }, {validators: PasswordValidator})
   }
 
 }

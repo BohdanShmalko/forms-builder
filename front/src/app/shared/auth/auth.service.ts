@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {catchError} from "rxjs/operators";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 export interface UserAuth {
-  login: string
-  password: string
+  login: string,
+  password: string,
 }
 
 export interface Token {
@@ -21,11 +20,11 @@ export interface TokenValidation {
 })
 export class AuthService {
 
-  private _basicURL = 'http://localhost:3001/user/'
-  private _registrationURL = this._basicURL + 'new'
-  private _loginURL = this._basicURL + 'login'
-  private _checkTokenURL = this._basicURL + 'check/token'
-  private _TOKEN = 'token'
+  private _basicURL = 'http://localhost:3001/user/';
+  private _registrationURL = this._basicURL + 'new';
+  private _loginURL = this._basicURL + 'login';
+  private _checkTokenURL = this._basicURL + 'check/token';
+  private _TOKEN = 'token';
 
   constructor(private http: HttpClient) {
   }
@@ -42,7 +41,7 @@ export class AuthService {
     return this.http.get<TokenValidation>(this._checkTokenURL)
   }
 
-  storeToken(token: string) {
+  storeToken(token: string): void {
     localStorage.setItem(this._TOKEN, token)
   }
 
@@ -54,7 +53,7 @@ export class AuthService {
     return localStorage.getItem(this._TOKEN)
   }
 
-  logoutUser() {
+  logoutUser(): void {
     localStorage.removeItem(this._TOKEN)
   }
 }

@@ -1,3 +1,5 @@
+$errorColor: red;
+
 .formContainer {
   padding: 100px;
   display: flex;
@@ -12,6 +14,6 @@
 }
 
 .serverErrorMessage {
-  color: red;
+  color: $errorColor;
   font-size: 12px;
 }

@@ -1,7 +1,11 @@
-import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {userNode, UserState} from "./user.reducers";
+import {createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSelector} from '@ngrx/store';
 
-export const selectorUserFeature = createFeatureSelector<UserState>(userNode)
+import {userNode, UserState} from './user.reducers';
 
-export const selectUserData = createSelector(selectorUserFeature,
-  (state: UserState): string => state.data)
+export type UserFeatureType = MemoizedSelector<object, UserState, DefaultProjectorFn<UserState>>
+export type UserDataSelectorType = MemoizedSelector<object, string, DefaultProjectorFn<string>>
+
+export const selectorUserFeature: UserFeatureType = createFeatureSelector<UserState>(userNode);
+
+export const selectUserData: UserDataSelectorType = createSelector(selectorUserFeature,
+  (state: UserState): string => state.data);

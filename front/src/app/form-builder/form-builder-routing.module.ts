@@ -1,10 +1,13 @@
-import {RouterModule, Routes} from "@angular/router";
-import {NgModule} from "@angular/core";
-import {FormBuilderComponent} from "./form-builder.component";
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
 
-const routes: Routes = [{
-  path: '', component: FormBuilderComponent
-}];
+import {FormBuilderComponent} from './form-builder.component';
+
+const routes: Routes = [
+  {
+    path: '', component: FormBuilderComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
@@ -13,4 +16,5 @@ const routes: Routes = [{
 export class AppFormBuilderRoutingModule {
 }
 
-export const routerFormBuilderComponents = [FormBuilderComponent]
+export type RouterFormBuilderComponentsType = (typeof FormBuilderComponent)[];
+export const routerFormBuilderComponents : RouterFormBuilderComponentsType = [FormBuilderComponent];

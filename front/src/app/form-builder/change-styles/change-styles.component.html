@@ -1,0 +1,14 @@
+<h2>Change style</h2>
+
+<div
+  cdkDropList
+  [cdkDropListData]="styled"
+  class="list"
+  (cdkDropListDropped)="toParentDrop($event)">
+  <div class="box" *ngFor="let item of styled" cdkDrag>
+    <div class="my-custom-placeholder" *cdkDragPlaceholder></div>
+    <div (click)="toParentItem(item)">
+      <ng-template [cdkPortalOutlet]="item.item"></ng-template>
+    </div>
+  </div>
+</div>

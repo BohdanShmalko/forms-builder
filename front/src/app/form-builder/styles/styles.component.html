@@ -1,0 +1,46 @@
+<h2>Styles</h2>
+
+<div class="list">
+  <div class="central-container">
+    <div class="box" [style]="{cursor : 'default'}">
+      <div *ngIf="currentElement">
+
+        <h3>width</h3>
+        <div>
+          <input [(ngModel)]="currentElement.itemData.styles.width">
+        </div>
+
+        <h3>height</h3>
+        <div>
+          <input [(ngModel)]="currentElement.itemData.styles.height">
+        </div>
+
+        <h3>border</h3>
+        <div>
+          <input [(ngModel)]="currentElement.itemData.styles.border">
+        </div>
+
+        <h3>font size</h3>
+        <div>
+          <input [(ngModel)]="currentElement.itemData.styles.fontSize">
+        </div>
+
+        <h3>weight</h3>
+        <div>
+          <input [(ngModel)]="currentElement.itemData.styles.fontWeight">
+        </div>
+
+        <h3>color</h3>
+        <div>
+          <input [(ngModel)]="currentElement.itemData.styles.color">
+        </div>
+
+        <div *ngIf="currentElement.itemData.placeholder !== undefined">
+          <h3>placeholder</h3>
+          <input [(ngModel)]="currentElement.itemData.placeholder">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

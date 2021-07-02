@@ -1,24 +1,25 @@
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = "this is my cool secret key"
+
+const SECRET_KEY = 'this is my cool secret key'
+const UNAUTHORIZED_REQUEST = 'Unauthorized request'
 
 module.exports = (req, res, next) => {
-    if(!req.headers.authorization) {
-        return res.status(401).send({message : 'Unauthorized request'})
+    if (!req.headers.authorization) {
+        return res.status(401).send({message: UNAUTHORIZED_REQUEST});
     }
-    let token = req.headers.authorization.split(' ')[1]
+    let token = req.headers.authorization.split(' ')[1];
 
-    if(!token) {
-        return res.status(401).send({message : 'Unauthorized request'})
+    if (!token) {
+        return res.status(401).send({message: UNAUTHORIZED_REQUEST});
     }
-    try{
-        let payload = jwt.verify(token, SECRET_KEY)
-        if(!payload) {
-            return res.status(401).send({message : 'Unauthorized request'})
+    try {
+        let payload = jwt.verify(token, SECRET_KEY);
+        if (!payload) {
+            return res.status(401).send({message: UNAUTHORIZED_REQUEST});
         }
-        req.userId = payload.subject
-        next()
-    }catch (err) {
-        return res.status(401).send({message : 'Unauthorized request'})
+        req.userId = payload.subject;
+        next();
+    } catch (err) {
+        return res.status(401).send({message: UNAUTHORIZED_REQUEST});
     }
-
 }
