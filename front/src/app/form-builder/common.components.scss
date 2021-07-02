@@ -1,0 +1,50 @@
+$item_background: white;
+$light_color: #ccc;
+$dark_color: rgba(0, 0, 0, 0.87);
+$light_gray: #999;
+$black_opacity_1: rgba(0, 0, 0, 0.2);
+$black_opacity_2: rgba(0, 0, 0, 0.14);
+$black_opacity_3: rgba(0, 0, 0, 0.12);
+
+
+.list {
+  border: solid 1px $light_color;
+  min-height: 60px;
+  background: $item_background;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
+
+.box {
+  padding: 20px 10px;
+  border-bottom: solid 1px $light_color;
+  color: $dark_color;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: $item_background;
+  font-size: 14px;
+}
+
+
+.box:last-child {
+  border: none;
+}
+
+.list.cdk-drop-list-dragging .box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.my-custom-placeholder {
+  background: $light_color;
+  border: dotted 3px $light_gray;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+

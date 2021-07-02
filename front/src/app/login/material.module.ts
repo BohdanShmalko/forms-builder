@@ -1,14 +1,14 @@
-import {MatButtonModule} from "@angular/material/button";
-import {NgModule} from "@angular/core";
-import {MatCardModule} from "@angular/material/card";
-import {MatInputModule} from "@angular/material/input";
-import {CommonModule} from "@angular/common";
+import {MatButtonModule} from '@angular/material/button';
+import {NgModule} from '@angular/core';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
 
-const materialComponents = [MatButtonModule, MatCardModule, MatInputModule]
+export type MaterialsLoginType = (typeof MatButtonModule | typeof MatCardModule | typeof MatInputModule)[];
+const materialLoginComponents: MaterialsLoginType = [MatButtonModule, MatCardModule, MatInputModule];
 
 @NgModule({
-  imports: [materialComponents, CommonModule],
-  exports: materialComponents
+  imports: [materialLoginComponents],
+  exports: materialLoginComponents
 })
 export class LoginMaterialModule {
 }

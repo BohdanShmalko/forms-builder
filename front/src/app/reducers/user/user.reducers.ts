@@ -1,26 +1,26 @@
-import {UserActions, userActionsType} from "./user.actions";
+import {UserActions, userActionsType} from './user.actions';
 
-
-export const userNode = 'user'
+export type UserNodeType = 'user'
+export const userNode: UserNodeType = 'user';
 
 export interface UserState {
-  data: string
-  error : string
-}
+  data: string,
+  error: string,
+};
 
 const initialState: UserState = {
   data: '',
-  error : ''
-}
+  error: '',
+};
 
-export const userReducer = (state = initialState, action: any) => { //???????
+export const userReducer = (state = initialState, action: any): UserState => { //TODO why not UserActions ????
   switch (action.type) {
     case userActionsType.setUserData:
-      return {...state, data: action.payload.data}
+      return {...state, data: action.payload.data};
     case userActionsType.userPageError:
-      return {...state, error : action.payload.message}
+      return {...state, error: action.payload.message};
     default:
-      return state
+      return state;
   }
 }
 

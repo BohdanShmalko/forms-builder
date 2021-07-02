@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
+
 import {AuthState} from "./reducers/auth/auth.reducers";
 import {CheckAuthAction} from "./reducers/auth/auth.actions";
 
@@ -9,12 +10,10 @@ import {CheckAuthAction} from "./reducers/auth/auth.actions";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'front';
 
-  constructor(private store$: Store<AuthState>) {
-  }
+  constructor(private store$: Store<AuthState>) {}
 
   ngOnInit() {
-    this.store$.dispatch(new CheckAuthAction())
+    this.store$.dispatch(new CheckAuthAction());
   }
 }

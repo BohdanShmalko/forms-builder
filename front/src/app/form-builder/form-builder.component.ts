@@ -1,19 +1,26 @@
 import {AfterViewInit, Component, ViewContainerRef, TemplateRef, ViewChild} from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
-import {Portal, TemplatePortal} from "@angular/cdk/portal";
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {Portal, TemplatePortal} from '@angular/cdk/portal';
 
-export interface ItemInDragDrop { //TODO
+export interface ItemInDragDrop {
   item: Portal<any>,
-  styles: {
-    width: string,
-    height: string,
-    border: string,
-    fontSize: string,
-    fontWeight: string,
-    textColor: string
-  }
-  placeholder: string
-  require: string
+  itemData: ItemData,
+}
+
+export interface Styles {
+  width?: string,
+  height?: string,
+  border?: string,
+  fontSize?: string,
+  fontWeight?: string,
+  textColor?: string,
+  color?: string,
+}
+
+export interface ItemData {
+  styles: Styles,
+  placeholder?: string,
+  require?: string,
 }
 
 @Component({
@@ -22,6 +29,8 @@ export interface ItemInDragDrop { //TODO
   styleUrls: ['./form-builder.component.scss']
 })
 export class FormBuilderComponent implements AfterViewInit {
+  //TODO remove ts-ignore
+
   // @ts-ignore
   @ViewChild('myButtonTemplate') myButtonTemplate: TemplateRef<unknown>;
   // @ts-ignore
@@ -33,12 +42,21 @@ export class FormBuilderComponent implements AfterViewInit {
   // @ts-ignore
   @ViewChild('mySelectTemplate') mySelectTemplate: TemplateRef<unknown>;
 
-  done: Portal<any>[] = []
 
-  styled: Portal<any>[] = []
+  public currentElement?: ItemInDragDrop;
+  public buttonData: ItemData = {styles: {}};
+  public checkboxData: ItemData = {styles: {}};
+  public inputData: ItemData = {styles: {}, placeholder: ''};
+  public textareaData: ItemData = {styles: {}, placeholder: ''};
+  public selectData: ItemData = {styles: {}};
 
-  drop(event: CdkDragDrop<any>) {
+  public done: ItemInDragDrop[] = [];
+  public styled: ItemInDragDrop[] = [];
 
+  constructor(private _viewContainerRef: ViewContainerRef) {
+  }
+
+  public drop(event: CdkDragDrop<ItemInDragDrop[]>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -46,18 +64,40 @@ export class FormBuilderComponent implements AfterViewInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+      for (let item of this.done) {
+        if (this.currentElement === item) {
+          this.currentElement = undefined
+          break;
+        }
+      }
     }
   }
 
-  constructor(private _viewContainerRef: ViewContainerRef) {
+  public ngAfterViewInit(): void {
+    const allTemplates: TemplateRef<unknown>[] = [
+      this.myButtonTemplate,
+      this.myCheckboxTemplate,
+      this.myInputTemplate,
+      this.myTextareaTemplate,
+      this.mySelectTemplate,
+    ];
+    const allData: ItemData[] = [
+      this.buttonData,
+      this.checkboxData,
+      this.inputData,
+      this.textareaData,
+      this.selectData,
+    ];
+    for (let i: number = 0; i < allData.length; i++) {
+      this.done[i] = {
+        item: new TemplatePortal(allTemplates[i], this._viewContainerRef),
+        itemData: allData[i]
+      };
+    }
   }
 
-  ngAfterViewInit() {
-    this.done[0] = new TemplatePortal(this.myButtonTemplate, this._viewContainerRef)
-    this.done[1] = new TemplatePortal(this.myCheckboxTemplate, this._viewContainerRef)
-    this.done[2] = new TemplatePortal(this.myInputTemplate, this._viewContainerRef)
-    this.done[3] = new TemplatePortal(this.myTextareaTemplate, this._viewContainerRef)
-    this.done[4] = new TemplatePortal(this.mySelectTemplate, this._viewContainerRef)
+  public setCurrentItem(item: ItemInDragDrop) {
+    this.currentElement = item;
   }
 
 }

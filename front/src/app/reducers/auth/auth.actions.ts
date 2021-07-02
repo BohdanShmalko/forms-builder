@@ -1,5 +1,6 @@
-import {Action} from "@ngrx/store";
-import {UserAuth} from "../../shared/auth/auth.service";
+import {Action} from '@ngrx/store';
+
+import {UserAuth} from '../../shared/auth/auth.service';
 
 export enum authActionsType {
   logout = '[AUTH] logout',
@@ -10,55 +11,55 @@ export enum authActionsType {
   setRegistrationError = '[AUTH] set registration error',
   checkAuth = '[AUTH] check auth',
   logoutAndDeleteToken = '[AUTH] logout and delete',
-  checkValidToken = '[AUTH] check valid token'
+  checkValidToken = '[AUTH] check valid token',
 }
 
 export class LogoutAction implements Action {
-  readonly type = authActionsType.logout
+  readonly type = authActionsType.logout;
 }
 
 export class LoginAction implements Action {
-  readonly type = authActionsType.login
+  readonly type = authActionsType.login;
 }
 
 export class SendLoginAction implements Action {
-  readonly type = authActionsType.sendLogin
+  readonly type = authActionsType.sendLogin;
 
   constructor(public payload: UserAuth) {
   }
 }
 
 export class SendRegistrationAction implements Action {
-  readonly type = authActionsType.sendRegistration
+  readonly type = authActionsType.sendRegistration;
 
   constructor(public payload: UserAuth) {
   }
 }
 
 export class SetLoginErrorAction implements Action {
-  readonly type = authActionsType.setLoginError
+  readonly type = authActionsType.setLoginError;
 
   constructor(public payload: { message: string }) {
   }
 }
 
 export class SetRegistrationErrorAction implements Action {
-  readonly type = authActionsType.setRegistrationError
+  readonly type = authActionsType.setRegistrationError;
 
   constructor(public payload: { message: string }) {
   }
 }
 
 export class CheckAuthAction implements Action {
-  readonly type = authActionsType.checkAuth
+  readonly type = authActionsType.checkAuth;
 }
 
 export class LogoutAndDeleteTokenAction implements Action {
-  readonly type = authActionsType.logoutAndDeleteToken
+  readonly type = authActionsType.logoutAndDeleteToken;
 }
 
 export class CheckValidTokenAction implements Action {
-  readonly type = authActionsType.checkValidToken
+  readonly type = authActionsType.checkValidToken;
 }
 
 export type AuthActions =
@@ -70,4 +71,4 @@ export type AuthActions =
   | SetRegistrationErrorAction
   | CheckAuthAction
   | LogoutAndDeleteTokenAction
-  | CheckValidTokenAction
+  | CheckValidTokenAction;

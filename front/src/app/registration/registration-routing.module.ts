@@ -1,6 +1,7 @@
-import {RouterModule, Routes} from "@angular/router";
-import {NgModule} from "@angular/core";
-import {RegistrationComponent} from "./registration.component";
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
+
+import {RegistrationComponent} from './registration.component';
 
 const routes: Routes = [{
   path: '', component: RegistrationComponent
@@ -13,4 +14,5 @@ const routes: Routes = [{
 export class RoutingRegistrationModule {
 }
 
-export const routerRegistrationComponents = [RegistrationComponent]
+export type RouterRegistrationComponentsType = (typeof RegistrationComponent)[];
+export const routerRegistrationComponents: RouterRegistrationComponentsType = [RegistrationComponent];

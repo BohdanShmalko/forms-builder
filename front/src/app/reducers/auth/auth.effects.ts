@@ -1,24 +1,23 @@
-import {Injectable} from "@angular/core";
-import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {AuthService} from "../../shared/auth/auth.service";
+import {Injectable} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {catchError, map, mergeMap, switchMap, takeWhile, tap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {Router} from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http';
+
+import {AuthService} from '../../shared/auth/auth.service';
 import {
   authActionsType,
   LoginAction,
   LogoutAction,
   SetLoginErrorAction,
   SetRegistrationErrorAction
-} from "./auth.actions";
-import {catchError, map, mergeMap, switchMap, take, takeWhile, tap} from 'rxjs/operators';
-import {of} from "rxjs";
-import {Router} from "@angular/router";
-import {HttpErrorResponse} from "@angular/common/http";
+} from './auth.actions';
 
 @Injectable()
 export class AuthEffects {
-  constructor(private actions$: Actions, private authService: AuthService, private router: Router) {
-  }
 
-  loginUser$ = createEffect(() =>
+  private loginUser$: Observable<LoginAction | SetLoginErrorAction> = createEffect(() =>
     this.actions$.pipe(
       ofType(authActionsType.sendLogin),
       mergeMap(({payload}) => this.authService.loginUser(payload).pipe(
@@ -33,7 +32,7 @@ export class AuthEffects {
     )
   )
 
-  registrationUser$ = createEffect(() =>
+  private registrationUser$: Observable<LoginAction | SetRegistrationErrorAction> = createEffect(() =>
     this.actions$.pipe(
       ofType(authActionsType.sendRegistration),
       mergeMap(({payload}) => this.authService.registrationUser(payload).pipe(
@@ -46,7 +45,7 @@ export class AuthEffects {
       ))
     ))
 
-  logoutAndDelete$ = createEffect(() => this.actions$.pipe(
+  private logoutAndDelete$: Observable<LogoutAction> = createEffect(() => this.actions$.pipe(
     ofType(authActionsType.logoutAndDeleteToken),
     switchMap(() => {
       this.authService.logoutUser()
@@ -54,13 +53,13 @@ export class AuthEffects {
     })
   ))
 
-  checkUserAuth$ = createEffect(() => this.actions$.pipe(
+  private checkUserAuth$: Observable<LoginAction> = createEffect(() => this.actions$.pipe(
     ofType(authActionsType.checkAuth),
     takeWhile(() => this.authService.isLoggedIn),
     switchMap(() => of(new LoginAction()))
   ))
 
-  checkValidToken$ = createEffect(() => this.actions$.pipe(
+  private checkValidToken$: Observable<LoginAction> = createEffect(() => this.actions$.pipe(
     ofType(authActionsType.checkValidToken),
     mergeMap(() => this.authService.checkValidToken().pipe(
       map(() => {
@@ -82,10 +81,6 @@ export class AuthEffects {
     )),
   ))
 
-  // checkAuthError$ = createEffect(() => this.actions$.pipe(
-  //   ofType(authActionsType.checkAuthToken),
-  //   switchMap((err) => {
-  //     return of(err)
-  //   })
-  // ))
+  constructor(private actions$: Actions, private authService: AuthService, private router: Router) {
+  }
 }
