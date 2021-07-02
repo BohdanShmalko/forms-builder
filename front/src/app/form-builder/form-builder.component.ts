@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, ViewContainerRef, TemplateRef, ViewChild} from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {Portal, TemplatePortal} from '@angular/cdk/portal';
+import { AfterViewInit, Component, ViewContainerRef, TemplateRef, ViewChild } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Portal, TemplatePortal } from '@angular/cdk/portal';
 
 export interface ItemInDragDrop {
   item: Portal<any>,
@@ -26,12 +26,12 @@ export interface ItemData {
 @Component({
   selector: 'app-form-builder',
   templateUrl: './form-builder.component.html',
-  styleUrls: ['./form-builder.component.scss']
+  styleUrls: [ './form-builder.component.scss' ]
 })
 export class FormBuilderComponent implements AfterViewInit {
   //TODO remove ts-ignore
 
-  // @ts-ignore
+// @ts-ignore
   @ViewChild('myButtonTemplate') myButtonTemplate: TemplateRef<unknown>;
   // @ts-ignore
   @ViewChild('myCheckboxTemplate') myCheckboxTemplate: TemplateRef<unknown>;
@@ -44,11 +44,11 @@ export class FormBuilderComponent implements AfterViewInit {
 
 
   public currentElement?: ItemInDragDrop;
-  public buttonData: ItemData = {styles: {}};
-  public checkboxData: ItemData = {styles: {}};
-  public inputData: ItemData = {styles: {}, placeholder: ''};
-  public textareaData: ItemData = {styles: {}, placeholder: ''};
-  public selectData: ItemData = {styles: {}};
+  public buttonData: ItemData = { styles: {} };
+  public checkboxData: ItemData = { styles: {} };
+  public inputData: ItemData = { styles: {}, placeholder: '' };
+  public textareaData: ItemData = { styles: {}, placeholder: '' };
+  public selectData: ItemData = { styles: {} };
 
   public done: ItemInDragDrop[] = [];
   public styled: ItemInDragDrop[] = [];
@@ -64,7 +64,7 @@ export class FormBuilderComponent implements AfterViewInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
-      for (let item of this.done) {
+      for ( let item of this.done ) {
         if (this.currentElement === item) {
           this.currentElement = undefined
           break;
@@ -74,7 +74,7 @@ export class FormBuilderComponent implements AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    const allTemplates: TemplateRef<unknown>[] = [
+    const allTemplates: ( TemplateRef<unknown> )[] = [
       this.myButtonTemplate,
       this.myCheckboxTemplate,
       this.myInputTemplate,
@@ -89,10 +89,13 @@ export class FormBuilderComponent implements AfterViewInit {
       this.selectData,
     ];
     for (let i: number = 0; i < allData.length; i++) {
-      this.done[i] = {
-        item: new TemplatePortal(allTemplates[i], this._viewContainerRef),
-        itemData: allData[i]
-      };
+
+        this.done[ i ] = {
+          item: new TemplatePortal(allTemplates[ i ], this._viewContainerRef),
+          itemData: allData[ i ]
+        };
+
+
     }
   }
 

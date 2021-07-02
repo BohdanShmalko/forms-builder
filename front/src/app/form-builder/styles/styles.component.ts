@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
-import {ItemInDragDrop} from '../form-builder.component';
+import { Component, Input } from '@angular/core';
+import { ItemInDragDrop } from '../form-builder.component';
 
 @Component({
   selector: 'app-styles',

@@ -1,11 +1,11 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {ItemInDragDrop} from "../form-builder.component";
-import {CdkDragDrop} from "@angular/cdk/drag-drop";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ItemInDragDrop } from "../form-builder.component";
+import { CdkDragDrop } from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-elements',
   templateUrl: './elements.component.html',
-  styleUrls: ['../common.components.scss']
+  styleUrls: [ '../common.components.scss' ]
 })
 export class ElementsComponent {
   @Input('done') done: ItemInDragDrop[] = [];

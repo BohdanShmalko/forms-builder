@@ -1,17 +1,17 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
+import { Component, OnInit } from '@angular/core';
+import { Store } from "@ngrx/store";
 
-import {AuthState} from "./reducers/auth/auth.reducers";
-import {CheckAuthAction} from "./reducers/auth/auth.actions";
+import { AuthState } from "./reducers/auth/auth.reducers";
+import { CheckAuthAction } from "./reducers/auth/auth.actions";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent implements OnInit {
 
-  constructor(private store$: Store<AuthState>) {}
+  constructor(private store$: Store< AuthState >) {}
 
   ngOnInit() {
     this.store$.dispatch(new CheckAuthAction());

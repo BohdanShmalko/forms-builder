@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export interface UserInf {
   data : {
@@ -18,7 +18,7 @@ export class UserPageService {
 
   constructor(private http : HttpClient) { }
 
-  getUserInf() : Observable<UserInf> {
-    return this.http.get<UserInf>(this._userInfURL)
+  getUserInf() : Observable< UserInf > {
+    return this.http.get< UserInf >( this._userInfURL )
   }
 }

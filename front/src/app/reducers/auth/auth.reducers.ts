@@ -1,4 +1,4 @@
-import {AuthActions, authActionsType} from './auth.actions';
+import { AuthActions, authActionsType } from './auth.actions';
 
 export type AuthNodeType = 'auth';
 export const authNode: AuthNodeType = 'auth';
@@ -18,13 +18,13 @@ const initialState: AuthState = {
 export const authReducer = (state = initialState, action: any): AuthState => { //TODO why not AuthActions ????
   switch (action.type) {
     case authActionsType.login:
-      return {...state, isRegisteredUser: true};
+      return { ...state, isRegisteredUser: true };
     case authActionsType.logout:
-      return {...state, isRegisteredUser: false};
+      return { ...state, isRegisteredUser: false };
     case authActionsType.setLoginError:
-      return {...state, loginError: action.payload.message};
+      return { ...state, loginError: action.payload.message };
     case authActionsType.setRegistrationError:
-      return {...state, registrationError: action.payload.message};
+      return { ...state, registrationError: action.payload.message };
     default:
       return state;
   }
