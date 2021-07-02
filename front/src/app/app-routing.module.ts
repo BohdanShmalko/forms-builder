@@ -1,8 +1,8 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {AuthUnloginGuard} from './shared/auth/auth-unlogin.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthUnloginGuard } from './shared/auth/auth-unlogin.guard';
 
 const routes: Routes = [
   {
@@ -29,12 +29,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot( routes ) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule {
 }
 
-export type RouterComponentsType = (typeof PageNotFoundComponent)[]
+export type RouterComponentsType = ( typeof PageNotFoundComponent )[]
 
-export const routerComponents: RouterComponentsType = [PageNotFoundComponent]
+export const routerComponents: RouterComponentsType = [ PageNotFoundComponent ]

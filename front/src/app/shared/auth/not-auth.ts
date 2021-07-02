@@ -1,7 +1,7 @@
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
-import {AuthState} from '../../reducers/auth/auth.reducers';
-import {CheckValidTokenAction} from '../../reducers/auth/auth.actions';
+import { AuthState } from '../../reducers/auth/auth.reducers';
+import { CheckValidTokenAction } from '../../reducers/auth/auth.actions';
 
 export abstract class NotAuthCheck {
   abstract store$: Store<AuthState>;

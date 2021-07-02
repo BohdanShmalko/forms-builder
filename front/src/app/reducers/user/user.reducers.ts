@@ -1,4 +1,4 @@
-import {UserActions, userActionsType} from './user.actions';
+import { UserActions, userActionsType } from './user.actions';
 
 export type UserNodeType = 'user'
 export const userNode: UserNodeType = 'user';
@@ -14,11 +14,11 @@ const initialState: UserState = {
 };
 
 export const userReducer = (state = initialState, action: any): UserState => { //TODO why not UserActions ????
-  switch (action.type) {
+  switch ( action.type ) {
     case userActionsType.setUserData:
-      return {...state, data: action.payload.data};
+      return { ...state, data: action.payload.data };
     case userActionsType.userPageError:
-      return {...state, error: action.payload.message};
+      return { ...state, error: action.payload.message };
     default:
       return state;
   }
