@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ItemInDragDrop } from "../form-builder.component";
-import { CdkDragDrop } from "@angular/cdk/drag-drop";
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+
+import { ItemInDragDrop } from '../form-builder.component';
 
 @Component({
   selector: 'app-elements',

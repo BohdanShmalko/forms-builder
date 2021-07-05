@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import { select, Store } from "@ngrx/store";
 
-import { SendLoginAction } from "../reducers/auth/auth.actions";
-import { selectLoginError } from "../reducers/auth/auth.selector";
-import { standardValidators } from "../shared/validation/standard";
-import { AuthState } from "../reducers/auth/auth.reducers";
+import { SendLoginAction } from "@core/reducers/auth/auth.actions";
+import { selectLoginError } from "@core/reducers/auth/auth.selector";
+import { standardValidators } from "@shared/validation/standard";
+import { AuthState } from "@core/reducers/auth/auth.reducers";
 
 @Component({
   selector: 'app-login',
@@ -21,13 +21,11 @@ export class LoginComponent {
     password: [ '', [ ...standardValidators ] ]
   });
 
-  public get login(): FormControl {
-    //@ts-ignore
+  public get login(): AbstractControl | null {
     return this.loginForm.get( 'login' )
   };
 
-  public get password(): FormControl {
-    //@ts-ignore
+  public get password(): AbstractControl | null {
     return this.loginForm.get( 'password' )
   };
 

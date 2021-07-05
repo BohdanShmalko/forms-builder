@@ -1,37 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AppRoutingModule, routerComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppMaterialModule } from './material.module';
-import { NavbarComponent } from './navbar/navbar.component';
-import { AuthUnloginGuard } from './shared/auth/auth-unlogin.guard';
-import { AuthInterceptorService } from './shared/auth/auth-interceptor.service';
-import { environment } from '../environments/environment';
-import { effects, reducers } from './reducers';
+import { AuthUnloginGuard } from '@core/services/auth/auth-unlogin.guard';
+import { AuthInterceptorService } from '@core/services/auth/auth-interceptor.service';
+import { CoreModule } from '@core/core.module';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    routerComponents,
-    NavbarComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    CoreModule,
+    SharedModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    AppMaterialModule,
-    HttpClientModule,
-    StoreModule.forRoot( reducers ),
-    EffectsModule.forRoot( effects ),
-    StoreDevtoolsModule.instrument( { maxAge: 25, logOnly: environment.production } ),
-    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [
     AuthUnloginGuard,

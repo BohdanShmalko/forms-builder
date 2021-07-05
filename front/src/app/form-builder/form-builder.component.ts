@@ -29,18 +29,12 @@ export interface ItemData {
   styleUrls: [ './form-builder.component.scss' ]
 })
 export class FormBuilderComponent implements AfterViewInit {
-  //TODO remove ts-ignore
 
-// @ts-ignore
-  @ViewChild('myButtonTemplate') myButtonTemplate: TemplateRef<unknown>;
-  // @ts-ignore
-  @ViewChild('myCheckboxTemplate') myCheckboxTemplate: TemplateRef<unknown>;
-  // @ts-ignore
-  @ViewChild('myInputTemplate') myInputTemplate: TemplateRef<unknown>;
-  // @ts-ignore
-  @ViewChild('myTextareaTemplate') myTextareaTemplate: TemplateRef<unknown>;
-  // @ts-ignore
-  @ViewChild('mySelectTemplate') mySelectTemplate: TemplateRef<unknown>;
+  @ViewChild('myButtonTemplate') myButtonTemplate: TemplateRef<Object>;
+  @ViewChild('myCheckboxTemplate') myCheckboxTemplate: TemplateRef<Object>;
+  @ViewChild('myInputTemplate') myInputTemplate: TemplateRef<Object>;
+  @ViewChild('myTextareaTemplate') myTextareaTemplate: TemplateRef<Object>;
+  @ViewChild('mySelectTemplate') mySelectTemplate: TemplateRef<Object>;
 
 
   public currentElement?: ItemInDragDrop;

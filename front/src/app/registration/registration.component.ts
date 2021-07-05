@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { select, Store } from '@ngrx/store';
 
-import { AuthState } from '../reducers/auth/auth.reducers';
-import { SendRegistrationAction } from '../reducers/auth/auth.actions';
-import { selectRegistrationError } from '../reducers/auth/auth.selector';
-import { PasswordValidator } from '../shared/validation/password.validator';
-import { standardValidators } from '../shared/validation/standard';
+import { AuthState } from '@core/reducers/auth/auth.reducers';
+import { SendRegistrationAction } from '@core/reducers/auth/auth.actions';
+import { selectRegistrationError } from '@core/reducers/auth/auth.selector';
+import { PasswordValidator } from '@shared/validation/password.validator';
+import { standardValidators } from '@shared/validation/standard';
 
 class RePasswordErrorManager implements ErrorStateMatcher {
   isErrorState(control: FormControl): boolean {
@@ -32,18 +32,15 @@ export class RegistrationComponent {
 
   public rePasswordErrorManager = new RePasswordErrorManager()
 
-  public get login(): FormControl {
-    //@ts-ignore
+  public get login(): AbstractControl | null {
     return this.registrationForm.get( 'login' )
   }
 
-  public get password(): FormControl {
-    //@ts-ignore
+  public get password(): AbstractControl | null {
     return this.registrationForm.get( 'password' )
   }
 
-  public get rePassword(): FormControl {
-    //@ts-ignore
+  public get rePassword(): AbstractControl | null {
     return this.registrationForm.get( 'rePassword' )
   }
 

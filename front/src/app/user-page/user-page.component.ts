@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
-import { AuthState } from '../reducers/auth/auth.reducers';
-import { NotAuthCheck } from '../shared/auth/not-auth';
-import { selectUserData } from '../reducers/user/user.selector';
-import { GetUserDataAction } from '../reducers/user/user.actions';
+import { AuthState } from '@core/reducers/auth/auth.reducers';
+import { NotAuthCheck } from '@core/services/auth/not-auth';
+import { selectUserData } from '@core/reducers/user/user.selector';
+import { GetUserDataAction } from '@core/reducers/user/user.actions';
 
 @Component({
   selector: 'app-user-page',
@@ -21,7 +21,7 @@ export class UserPageComponent extends NotAuthCheck implements OnInit {
 
   ngOnInit(): void {
     this.checkAuth()
-    this.store$.dispatch(new GetUserDataAction())
+    this.store$.dispatch(GetUserDataAction())
   }
 
 }
