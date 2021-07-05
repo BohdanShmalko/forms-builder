@@ -1,4 +1,5 @@
 import { UserActions, userActionsType } from './user.actions';
+import { ActionReducer } from "@ngrx/store";
 
 export type UserNodeType = 'user'
 export const userNode: UserNodeType = 'user';
@@ -13,12 +14,12 @@ const initialState: UserState = {
   error: '',
 };
 
-export const userReducer = (state = initialState, action: any): UserState => { //TODO why not UserActions ????
+export const userReducer: ActionReducer<UserState, UserActions> = (state = initialState, action) => {
   switch ( action.type ) {
     case userActionsType.setUserData:
-      return { ...state, data: action.payload.data };
+      return { ...state, data: action.data };
     case userActionsType.userPageError:
-      return { ...state, error: action.payload.message };
+      return { ...state, error: action.message };
     default:
       return state;
   }

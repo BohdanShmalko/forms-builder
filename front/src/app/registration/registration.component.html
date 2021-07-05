@@ -9,9 +9,9 @@
       <mat-label>Login</mat-label>
       <input formControlName="login" matInput>
 
-      <mat-error *ngIf="login.touched && login.errors?.required">{{ 'Login' | validation: 'empty' }}</mat-error>
-      <mat-error *ngIf="login.errors?.minlength">{{ 'Login' | validation: 'min-length' }}</mat-error>
-      <mat-error *ngIf="login.errors?.maxlength">{{ 'Login' | validation: 'max-length' }}</mat-error>
+      <mat-error *ngIf="login?.touched && login?.errors?.required">{{ 'Login' | validation: 'empty' }}</mat-error>
+      <mat-error *ngIf="login?.errors?.minlength">{{ 'Login' | validation: 'min-length' }}</mat-error>
+      <mat-error *ngIf="login?.errors?.maxlength">{{ 'Login' | validation: 'max-length' }}</mat-error>
 
     </mat-form-field>
 
@@ -19,11 +19,11 @@
       <mat-label>Password</mat-label>
       <input type="password" formControlName="password" matInput>
 
-      <mat-error *ngIf="password.touched && password.errors?.required">
+      <mat-error *ngIf="password?.touched && password?.errors?.required">
         {{ 'Password' | validation: 'empty' }}
       </mat-error>
-      <mat-error *ngIf="password.errors?.minlength">{{ 'Password' | validation: 'min-length' }}</mat-error>
-      <mat-error *ngIf="password.errors?.maxlength">{{ 'Password' | validation: 'max-length' }}</mat-error>
+      <mat-error *ngIf="password?.errors?.minlength">{{ 'Password' | validation: 'min-length' }}</mat-error>
+      <mat-error *ngIf="password?.errors?.maxlength">{{ 'Password' | validation: 'max-length' }}</mat-error>
 
     </mat-form-field>
 
@@ -31,7 +31,7 @@
       <mat-label>Re-password</mat-label>
       <input [errorStateMatcher]="rePasswordErrorManager" type="password" formControlName="rePassword" matInput>
 
-      <mat-error *ngIf="rePassword.touched && registrationForm.errors?.mismatch">Re-password is incorrect</mat-error>
+      <mat-error *ngIf="rePassword?.touched && registrationForm.errors?.mismatch">Re-password is incorrect</mat-error>
 
     </mat-form-field>
 

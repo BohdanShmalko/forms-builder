@@ -6,17 +6,17 @@
 
   <div class="spacer"></div>
 
-  <a mat-button routerLink="formbuilder">Form builder</a>
+  <a (click)="toFormBuilderPage()" mat-button routerLink="formbuilder">Form builder</a>
 
   <div *ngIf="isReqUser$ | async ; else notRegistered">
-    <a mat-button routerLink="userpage">My page</a>
+    <a (click)="toUserPage()" mat-button routerLink="userpage">My page</a>
     <a mat-raised-button color="warn" routerLink="login" (click)="logout()">Logout</a>
   </div>
 
 
   <ng-template #notRegistered>
-    <a mat-button routerLink="registration">Registration</a>
-    <a mat-raised-button color="warn" routerLink="login">Login</a>
+    <a (click)="toRegistrationPage()" mat-button routerLink="registration">Registration</a>
+    <a (click)="toLoginPage()" mat-raised-button color="warn" routerLink="login">Login</a>
   </ng-template>
 
 </mat-toolbar>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from "@ngrx/store";
+import { Store } from '@ngrx/store';
 
-import { AuthState } from "./reducers/auth/auth.reducers";
-import { CheckAuthAction } from "./reducers/auth/auth.actions";
+import { AuthState } from '@core/reducers/auth/auth.reducers';
+import { CheckAuthAction } from '@core/reducers/auth/auth.actions';
 
 @Component({
   selector: 'app-root',

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveComponentModule } from '@ngrx/component';
 
 import { RegistrationMaterialModule } from './material.module';
-import { MyPipesModule } from '../shared/pipes/my-pipes.module';
+import { MyPipesModule } from '@shared/pipes/my-pipes.module';
 import { routerRegistrationComponents, RoutingRegistrationModule } from './registration-routing.module';
 
 @NgModule({

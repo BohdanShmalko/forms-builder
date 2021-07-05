@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { AuthService } from '../../shared/auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import {
   authActionsType,
   LoginAction,
