@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { UserAuth } from '../../shared/auth/auth.service';
+import { UserAuth } from '../../services/auth/auth.service';
 
 export enum authActionsType {
   logout = '[AUTH] logout',

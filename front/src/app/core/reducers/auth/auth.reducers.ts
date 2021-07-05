@@ -1,4 +1,5 @@
 import { AuthActions, authActionsType } from './auth.actions';
+import { ActionReducer } from "@ngrx/store";
 
 export type AuthNodeType = 'auth';
 export const authNode: AuthNodeType = 'auth';
@@ -15,7 +16,7 @@ const initialState: AuthState = {
   registrationError: '',
 };
 
-export const authReducer = (state = initialState, action: any): AuthState => { //TODO why not AuthActions ????
+export const authReducer: ActionReducer<AuthState, AuthActions> = (state = initialState, action) => {
   switch (action.type) {
     case authActionsType.login:
       return { ...state, isRegisteredUser: true };
