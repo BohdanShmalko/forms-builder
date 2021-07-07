@@ -1,8 +1,4 @@
-$item_background: white;
-$black_opacity_1: rgba(0, 0, 0, 0.2);
-$black_opacity_2: rgba(0, 0, 0, 0.14);
-$black_opacity_3: rgba(0, 0, 0, 0.12);
-
+@import "variables";
 
 .mainContainer {
   padding: 20px;

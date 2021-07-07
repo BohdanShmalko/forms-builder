@@ -6,7 +6,7 @@ export interface UserInf {
   data : {
     message : string
   }
-};
+}
 
 @Injectable({
   providedIn: 'root'
