@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { select, Store } from "@ngrx/store";
 
 import { SendLoginAction } from "@core/reducers/auth/auth.actions";

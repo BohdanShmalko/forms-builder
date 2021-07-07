@@ -10,7 +10,8 @@ import {
   SetUserErrorActionType,
   userActionsType
 } from './user.actions';
-import { UserPageService } from '../../services/user-page.service';
+import { UserPageService } from '@core/services';
+
 
 @Injectable()
 export class UserEffects {

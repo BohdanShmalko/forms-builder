@@ -2,8 +2,8 @@ import { createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSele
 
 import { userNode, UserState } from './user.reducers';
 
-export type UserFeatureType = MemoizedSelector<object, UserState, DefaultProjectorFn<UserState>>
-export type UserDataSelectorType = MemoizedSelector<object, string, DefaultProjectorFn<string>>
+export type UserFeatureType = MemoizedSelector<object, UserState, DefaultProjectorFn<UserState>>;
+export type UserDataSelectorType = MemoizedSelector<object, string, DefaultProjectorFn<string>>;
 
 export const selectorUserFeature: UserFeatureType = createFeatureSelector<UserState>(userNode);
 
