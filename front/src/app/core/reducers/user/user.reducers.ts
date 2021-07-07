@@ -1,18 +1,19 @@
-import { UserActions, userActionsType } from './user.actions';
-import { ActionReducer } from "@ngrx/store";
+import { ActionReducer } from '@ngrx/store';
 
-export type UserNodeType = 'user'
+import { UserActions, userActionsType } from './user.actions';
+
+export type UserNodeType = 'user';
 export const userNode: UserNodeType = 'user';
 
 export interface UserState {
   data: string,
   error: string,
-};
+}
 
 const initialState: UserState = {
   data: '',
   error: '',
-};
+}
 
 export const userReducer: ActionReducer<UserState, UserActions> = (state = initialState, action) => {
   switch ( action.type ) {

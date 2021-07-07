@@ -1,5 +1,6 @@
+import { ActionReducer } from '@ngrx/store';
+
 import { AuthActions, authActionsType } from './auth.actions';
-import { ActionReducer } from "@ngrx/store";
 
 export type AuthNodeType = 'auth';
 export const authNode: AuthNodeType = 'auth';
@@ -8,7 +9,7 @@ export interface AuthState {
   isRegisteredUser: boolean,
   loginError: string,
   registrationError: string,
-};
+}
 
 const initialState: AuthState = {
   isRegisteredUser: false,

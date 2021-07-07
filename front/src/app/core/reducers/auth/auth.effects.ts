@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { AuthService } from '../../services/auth/auth.service';
+
 import {
   authActionsType,
   LoginAction,
@@ -13,6 +13,7 @@ import {
   SetLoginErrorAction,
   SetRegistrationErrorAction
 } from './auth.actions';
+import { AuthService } from '@core/services';
 
 @Injectable()
 export class AuthEffects {
