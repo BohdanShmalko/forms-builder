@@ -42,17 +42,16 @@ export class FormBuilderComponent extends NotAuthCheck implements AfterViewInit,
   @ViewChild('myTextareaTemplate') myTextareaTemplate: TemplateRef<Object>;
   @ViewChild('mySelectTemplate') mySelectTemplate: TemplateRef<Object>;
 
-
   public currentElement?: ItemInDragDrop;
-  public buttonData: ItemData = { styles: {widthUnit : 'px', heightUnit : 'px'}, placeholder: 'click me' };
-  public checkboxData: ItemData = { styles: {widthUnit : 'px', heightUnit : 'px'} };
-  public inputData: ItemData = { styles: {widthUnit : 'px', heightUnit : 'px'}, placeholder: '', require: false };
-  public textareaData: ItemData = { styles: {widthUnit : 'px', heightUnit : 'px'}, placeholder: '', require: false };
-  public selectData: ItemData = { styles: {widthUnit : 'px', heightUnit : 'px'} };
+
+  public buttonData: ItemData = this.dataFactory('click me');
+  public checkboxData: ItemData = this.dataFactory();
+  public inputData: ItemData = this.dataFactory('', true);
+  public textareaData: ItemData = this.dataFactory('', true);
+  public selectData: ItemData = this.dataFactory();
 
   public done: ItemInDragDrop[] = [];
   public styled: ItemInDragDrop[] = [];
-
 
   public drop(event: CdkDragDrop<ItemInDragDrop[]>): void {
     if (event.previousContainer === event.container) {
@@ -72,7 +71,7 @@ export class FormBuilderComponent extends NotAuthCheck implements AfterViewInit,
   }
 
   public ngAfterViewInit(): void {
-    const allTemplates: ( TemplateRef<unknown> )[] = [
+    const allTemplates: ( TemplateRef<Object> )[] = [
       this.myButtonTemplate,
       this.myCheckboxTemplate,
       this.myInputTemplate,
@@ -87,13 +86,10 @@ export class FormBuilderComponent extends NotAuthCheck implements AfterViewInit,
       this.selectData,
     ];
     for (let i: number = 0; i < allData.length; i++) {
-
         this.done[ i ] = {
           item: new TemplatePortal(allTemplates[ i ], this._viewContainerRef),
           itemData: allData[ i ]
         };
-
-
     }
   }
 
@@ -101,6 +97,11 @@ export class FormBuilderComponent extends NotAuthCheck implements AfterViewInit,
     super()
   }
 
+  private dataFactory(placeholder : string | undefined = undefined, useRequire : boolean = false) : ItemData {
+    const styles: Styles = {widthUnit : 'px', heightUnit : 'px'};
+    const require: boolean | undefined = useRequire ? false : undefined;
+    return { styles, placeholder, require };
+  }
 
   public setCurrentItem(item: ItemInDragDrop) {
     this.currentElement = item;
