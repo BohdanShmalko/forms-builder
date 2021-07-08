@@ -1,20 +1,13 @@
 import { Component, Input } from '@angular/core';
 
 import { ItemData } from '../form-builder.component';
+import {SetStyle} from "./set-style";
 
 @Component({
   selector: 'app-my-button',
   template: `
-    <button [ngStyle]="{
-    width : data.styles.width + data.styles.widthUnit,
-    height : data.styles.height + data.styles.heightUnit,
-    border : data.styles.border,
-    fontSize : data.styles.fontSize,
-    fontWeight : data.styles.fontWeight,
-    textColor : data.styles.textColor,
-    color : data.styles.color
-}">{{ data.placeholder }}</button>`,
+    <button [ngStyle]="setStyles()">{{ data.placeholder }}</button>`,
 })
-export class MyButtonComponent {
+export class MyButtonComponent extends SetStyle {
   @Input('data') data: ItemData;
 }
