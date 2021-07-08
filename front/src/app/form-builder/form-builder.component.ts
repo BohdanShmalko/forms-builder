@@ -1,6 +1,10 @@
-import { AfterViewInit, Component, ViewContainerRef, TemplateRef, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, ViewContainerRef, TemplateRef, ViewChild, OnInit} from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Portal, TemplatePortal } from '@angular/cdk/portal';
+import {Store} from '@ngrx/store';
+
+import {AuthState} from '@core/reducers/auth/auth.reducers';
+import {NotAuthCheck} from '@core/services/auth/not-auth';
 
 export interface ItemInDragDrop {
   item: Portal<any>,
@@ -28,7 +32,7 @@ export interface ItemData {
   templateUrl: './form-builder.component.html',
   styleUrls: [ './form-builder.component.scss' ]
 })
-export class FormBuilderComponent implements AfterViewInit {
+export class FormBuilderComponent extends NotAuthCheck implements AfterViewInit, OnInit {
 
   @ViewChild('myButtonTemplate') myButtonTemplate: TemplateRef<Object>;
   @ViewChild('myCheckboxTemplate') myCheckboxTemplate: TemplateRef<Object>;
@@ -47,8 +51,6 @@ export class FormBuilderComponent implements AfterViewInit {
   public done: ItemInDragDrop[] = [];
   public styled: ItemInDragDrop[] = [];
 
-  constructor(private _viewContainerRef: ViewContainerRef) {
-  }
 
   public drop(event: CdkDragDrop<ItemInDragDrop[]>): void {
     if (event.previousContainer === event.container) {
@@ -93,8 +95,17 @@ export class FormBuilderComponent implements AfterViewInit {
     }
   }
 
+  constructor(private _viewContainerRef: ViewContainerRef, public store$: Store< AuthState >) {
+    super()
+  }
+
+
   public setCurrentItem(item: ItemInDragDrop) {
     this.currentElement = item;
+  }
+
+  public ngOnInit() {
+    this.checkAuth();
   }
 
 }
