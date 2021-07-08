@@ -22,21 +22,21 @@
 
 
 <ng-template #myButtonTemplate>
-  <app-my-button [styles]="buttonData.styles"></app-my-button>
+  <app-my-button [data]="buttonData"></app-my-button>
 </ng-template>
 
 <ng-template #myTextareaTemplate>
-  <app-my-textarea [styles]="textareaData.styles" [placeholder]="textareaData.placeholder"></app-my-textarea>
+  <app-my-textarea [data]="textareaData"></app-my-textarea>
 </ng-template>
 
 <ng-template #myCheckboxTemplate>
-  <app-my-checkbox [styles]="checkboxData.styles"></app-my-checkbox>
+  <app-my-checkbox [data]="checkboxData"></app-my-checkbox>
 </ng-template>
 
 <ng-template #myInputTemplate>
-  <app-my-input [styles]="inputData.styles" [placeholder]="inputData.placeholder"></app-my-input>
+  <app-my-input [data]="inputData"></app-my-input>
 </ng-template>
 
 <ng-template #mySelectTemplate>
-  <app-my-select [styles]="selectData.styles"></app-my-select>
+  <app-my-select [data]="selectData"></app-my-select>
 </ng-template>

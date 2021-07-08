@@ -14,7 +14,7 @@ export class AuthUnloginGuard implements CanActivate {
   canActivate(): boolean {
     if (this._authService.isLoggedIn) return true;
 
-    this._router.navigate([ '/login' ]);
+    this._router.navigate([ '/auth/login' ]);
     return false;
   }
 

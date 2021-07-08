@@ -6,7 +6,7 @@
 
   <div class="spacer"></div>
 
-  <a (click)="toFormBuilderPage()" mat-button routerLink="formbuilder">Form builder</a>
+  <a *ngIf="isReqUser$ | async" (click)="toFormBuilderPage()" mat-button routerLink="formbuilder">Form builder</a>
 
   <div *ngIf="isReqUser$ | async ; else notRegistered">
     <a (click)="toUserPage()" mat-button routerLink="userpage">My page</a>

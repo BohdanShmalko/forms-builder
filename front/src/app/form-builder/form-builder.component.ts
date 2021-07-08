@@ -12,6 +12,8 @@ export interface ItemInDragDrop {
 }
 
 export interface Styles {
+  widthUnit : string,
+  heightUnit : string,
   width?: string,
   height?: string,
   border?: string,
@@ -24,7 +26,7 @@ export interface Styles {
 export interface ItemData {
   styles: Styles,
   placeholder?: string,
-  require?: string,
+  require?: boolean,
 }
 
 @Component({
@@ -42,11 +44,11 @@ export class FormBuilderComponent extends NotAuthCheck implements AfterViewInit,
 
 
   public currentElement?: ItemInDragDrop;
-  public buttonData: ItemData = { styles: {} };
-  public checkboxData: ItemData = { styles: {} };
-  public inputData: ItemData = { styles: {}, placeholder: '' };
-  public textareaData: ItemData = { styles: {}, placeholder: '' };
-  public selectData: ItemData = { styles: {} };
+  public buttonData: ItemData = { styles: {widthUnit : 'px', heightUnit : 'px'}, placeholder: 'click me' };
+  public checkboxData: ItemData = { styles: {widthUnit : 'px', heightUnit : 'px'} };
+  public inputData: ItemData = { styles: {widthUnit : 'px', heightUnit : 'px'}, placeholder: '', require: false };
+  public textareaData: ItemData = { styles: {widthUnit : 'px', heightUnit : 'px'}, placeholder: '', require: false };
+  public selectData: ItemData = { styles: {widthUnit : 'px', heightUnit : 'px'} };
 
   public done: ItemInDragDrop[] = [];
   public styled: ItemInDragDrop[] = [];
