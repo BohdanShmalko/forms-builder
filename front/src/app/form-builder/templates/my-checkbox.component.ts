@@ -1,23 +1,16 @@
 import { Component, Input } from '@angular/core';
 
 import { ItemData } from '../form-builder.component';
+import {SetStyle} from "./set-style";
 
 @Component({
   selector: 'app-my-checkbox',
   template: `
-    <div [ngStyle]="{
-    width : data.styles.width + data.styles.widthUnit,
-    height : data.styles.height + data.styles.heightUnit,
-    border : data.styles.border,
-    fontSize : data.styles.fontSize,
-    fontWeight : data.styles.fontWeight,
-    textColor : data.styles.textColor,
-    color : data.styles.color
-}">
+    <div [ngStyle]="setStyles()">
       <input type="checkbox" id="test-checkbox" name="scales">
       <label for="test-checkbox">Test box</label>
     </div>`,
 })
-export class MyCheckboxComponent {
+export class MyCheckboxComponent extends SetStyle {
   @Input('data') data : ItemData;
 }

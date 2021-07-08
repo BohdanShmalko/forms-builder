@@ -1,20 +1,13 @@
 import {Component, Input} from '@angular/core';
 
 import { ItemData } from '../form-builder.component';
+import {SetStyle} from "./set-style";
 
 @Component({
   selector: 'app-my-input',
   template: `<input [required]="data.require"
-                    [ngStyle]="{
-    width : data.styles.width + data.styles.widthUnit,
-    height : data.styles.height + data.styles.heightUnit,
-    border : data.styles.border,
-    fontSize : data.styles.fontSize,
-    fontWeight : data.styles.fontWeight,
-    textColor : data.styles.textColor,
-    color : data.styles.color
-}" [placeholder]="data.placeholder">`,
+                    [ngStyle]="setStyles()" [placeholder]="data.placeholder">`,
 })
-export class MyInputComponent {
+export class MyInputComponent extends SetStyle {
   @Input('data') data: ItemData;
 }
