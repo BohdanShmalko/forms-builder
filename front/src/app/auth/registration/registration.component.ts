@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 
 import { AuthState } from '@core/reducers/auth/auth.reducers';

@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, ViewContainerRef, TemplateRef, ViewChild, OnInit} from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Portal, TemplatePortal } from '@angular/cdk/portal';
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
-import {AuthState} from '@core/reducers/auth/auth.reducers';
-import {NotAuthCheck} from '@core/services/auth/not-auth';
+import { AuthState } from '@core/reducers/auth/auth.reducers';
+import { NotAuthCheck } from '@core/services/auth/not-auth';
 
 export interface ItemInDragDrop {
   item: Portal<any>,
