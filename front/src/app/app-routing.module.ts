@@ -14,11 +14,8 @@ const routes: Routes = [
     canActivate: [AuthUnloginGuard]
   },
   {
-    path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  },
-  {
-    path: 'registration',
-    loadChildren: () => import('./registration/registration.module').then(m => m.RegistrationModule)
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'userpage',

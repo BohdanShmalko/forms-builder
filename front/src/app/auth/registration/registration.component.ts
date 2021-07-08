@@ -9,12 +9,6 @@ import { selectRegistrationError } from '@core/reducers/auth/auth.selector';
 import { PasswordValidator } from '@shared/validation/password.validator';
 import { standardValidators } from '@shared/validation/standard';
 
-class RePasswordErrorManager implements ErrorStateMatcher {
-  isErrorState(control: FormControl): boolean {
-    return control.touched && control.errors?.mismatch;
-  }
-}
-
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -29,8 +23,6 @@ export class RegistrationComponent {
     password: ['', [ ...standardValidators ]],
     rePassword: ['']
   }, {validators: PasswordValidator});
-
-  public rePasswordErrorManager = new RePasswordErrorManager()
 
   public get login(): AbstractControl | null {
     return this.registrationForm.get( 'login' )

@@ -21,11 +21,11 @@ export class NavbarComponent {
 
   public logout(): void {
     this.store$.dispatch(new LogoutAndDeleteTokenAction())
-    this._router.navigate(['login'])
+    this._router.navigate(['auth/login'])
   }
 
   toRegistrationPage(): void {
-    this._router.navigate(['registration'])
+    this._router.navigate(['auth/registration'])
   }
 
   toFormBuilderPage(): void {
@@ -33,7 +33,7 @@ export class NavbarComponent {
   }
 
   toLoginPage(): void {
-    this._router.navigate(['login'])
+    this._router.navigate(['auth/login'])
   }
 
   toUserPage(): void {
