@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import {ItemData, Styles} from '../form-builder.component';
+import { ItemData } from '../form-builder.component';
 
 @Component({
   selector: 'app-my-checkbox',
