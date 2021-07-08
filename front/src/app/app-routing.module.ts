@@ -9,7 +9,9 @@ const routes: Routes = [
     path: '', redirectTo: '/formbuilder', pathMatch: 'full'
   },
   {
-    path: 'formbuilder', loadChildren: () => import('./form-builder/form-builder.module').then(m => m.FormBuilderModule)
+    path: 'formbuilder',
+    loadChildren: () => import('./form-builder/form-builder.module').then(m => m.FormBuilderModule),
+    canActivate: [AuthUnloginGuard]
   },
   {
     path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
