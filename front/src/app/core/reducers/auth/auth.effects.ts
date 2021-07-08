@@ -24,7 +24,7 @@ export class AuthEffects {
       mergeMap(({ payload }) => this.authService.loginUser(payload).pipe(
         map(({ token }) => {
           this.authService.storeToken( token )
-          this.router.navigate([ '/userpage' ])
+          this.router.navigate([ '/formbuilder' ])
           return new LoginAction()
         }),
         catchError(({error: {message}}) => of(new SetLoginErrorAction({message})))
@@ -39,7 +39,7 @@ export class AuthEffects {
       mergeMap(({payload}) => this.authService.registrationUser(payload).pipe(
         map(({token}) => {
           this.authService.storeToken(token)
-          this.router.navigate(['/userpage'])
+          this.router.navigate(['/formbuilder'])
           return new LoginAction()
         }),
         catchError(({error: {message}}) => of(new SetRegistrationErrorAction({message})))
@@ -69,7 +69,7 @@ export class AuthEffects {
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            this.router.navigate(['/login'])
+            this.router.navigate(['/auth/login'])
             this.authService.logoutUser()
           }
         }

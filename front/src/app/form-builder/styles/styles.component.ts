@@ -5,7 +5,7 @@ import { ItemInDragDrop } from '../form-builder.component';
 @Component({
   selector: 'app-styles',
   templateUrl: './styles.component.html',
-  styleUrls: ['../common.components.scss']
+  styleUrls: ['../common.components.scss', './styles.component.scss']
 })
 export class StylesComponent{
   @Input('currentElement') currentElement?: ItemInDragDrop

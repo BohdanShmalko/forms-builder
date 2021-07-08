@@ -4,7 +4,6 @@
   padding: 100px;
   display: flex;
   justify-content: center;
-
   & mat-card {
     display: flex;
     flex-direction: column;
@@ -16,4 +15,8 @@
 .serverErrorMessage {
   color: $errorColor;
   font-size: 12px;
+}
+
+.input_class {
+  margin-top: 15px;
 }
