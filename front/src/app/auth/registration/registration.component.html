@@ -44,7 +44,7 @@
       ></app-custom-input>
     </div>
 
-    <div *ngrxLet="serverErrorMessage$; let error" class="serverErrorMessage">
+    <div *ngIf="serverErrorMessage$ | ngrxPush as error" class="serverErrorMessage">
       <p>{{ error }}</p>
     </div>
 

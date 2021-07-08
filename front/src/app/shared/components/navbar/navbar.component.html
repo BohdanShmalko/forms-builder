@@ -6,11 +6,10 @@
 
   <div class="spacer"></div>
 
-  <a *ngIf="isReqUser$ | async" (click)="toFormBuilderPage()" mat-button routerLink="formbuilder">Form builder</a>
-
-  <div *ngIf="isReqUser$ | async ; else notRegistered">
-    <a (click)="toUserPage()" mat-button routerLink="userpage">My page</a>
-    <a mat-raised-button color="warn" routerLink="login" (click)="logout()">Logout</a>
+  <div *ngIf="isReqUser$ | ngrxPush as reqUser; else notRegistered">
+      <a (click)="toFormBuilderPage()" mat-button routerLink="formbuilder">Form builder</a>
+      <a (click)="toUserPage()" mat-button routerLink="userpage">My page</a>
+      <a mat-raised-button color="warn" routerLink="login" (click)="logout()">Logout</a>
   </div>
 
 
