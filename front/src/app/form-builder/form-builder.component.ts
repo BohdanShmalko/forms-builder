@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ViewContainerRef, TemplateRef, ViewChild, OnInit} from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import {CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Portal, TemplatePortal } from '@angular/cdk/portal';
 import { Store } from '@ngrx/store';
 

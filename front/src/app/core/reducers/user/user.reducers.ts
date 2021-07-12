@@ -15,15 +15,16 @@ const initialState: UserState = {
   error: '',
 }
 
-export const userReducer: ActionReducer<UserState, UserActions> = (state = initialState, action) => {
-  switch ( action.type ) {
-    case userActionsType.setUserData:
-      return { ...state, data: action.data };
-    case userActionsType.userPageError:
-      return { ...state, error: action.message };
-    default:
-      return state;
+export const userReducer: ActionReducer<UserState, UserActions> =
+  (state: UserState = initialState, action: UserActions): UserState => {
+    switch (action.type) {
+      case userActionsType.setUserData:
+        return {...state, data: action.data};
+      case userActionsType.userPageError:
+        return {...state, error: action.message};
+      default:
+        return state;
+    }
   }
-}
 
 
