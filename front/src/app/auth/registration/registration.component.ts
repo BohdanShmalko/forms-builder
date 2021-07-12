@@ -20,7 +20,7 @@ export class RegistrationComponent {
   public registrationForm: FormGroup = this.fb.group({
     login: ['', [ ...standardValidators ]],
     password: ['', [ ...standardValidators ]],
-    rePassword: ['']
+    rePassword: ['', [ ...standardValidators ]]
   }, {validators: PasswordValidator});
 
   public get login(): AbstractControl | null {

@@ -38,9 +38,9 @@
         placeholder="Password"
         name="Repeat password"
         type="password"
-        [success]="!!(rePassword?.touched && !registrationForm.errors?.mismatch && password?.touched)"
+        [success]="!!(rePassword?.touched && !registrationForm.errors?.mismatch && password?.touched && rePassword?.value)"
         [invalid]="
-        (rePassword?.touched && registrationForm?.errors?.mismatch) ? 'Re-password is incorrect' : ''"
+        (rePassword?.touched && (registrationForm?.errors?.mismatch || rePassword?.errors)) ? 'Re-password is incorrect' : ''"
       ></app-custom-input>
     </div>
 
