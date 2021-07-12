@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <div>
+    <mat-icon>book</mat-icon>
+    <span>FormBuilder</span>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div *ngIf="isReqUser$ | ngrxPush as reqUser; else notRegistered">
+      <a (click)="toFormBuilderPage()" mat-button routerLink="formbuilder">Form builder</a>
+      <a (click)="toUserPage()" mat-button routerLink="userpage">My page</a>
+      <a mat-raised-button color="warn" routerLink="login" (click)="logout()">Logout</a>
+  </div>
+
+
+  <ng-template #notRegistered>
+    <a (click)="toRegistrationPage()" mat-button routerLink="registration">Registration</a>
+    <a (click)="toLoginPage()" mat-raised-button color="warn" routerLink="login">Login</a>
+  </ng-template>
+
+</mat-toolbar>

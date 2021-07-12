@@ -1,0 +1,43 @@
+@import "variables.scss";
+
+.list {
+  border: solid 1px $light_color;
+  min-height: 60px;
+  background: $item_background;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
+
+.box {
+  padding: 20px 10px;
+  border-bottom: solid 1px $light_color;
+  color: $dark_color;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: $item_background;
+  font-size: 14px;
+}
+
+
+.box:last-child {
+  border: none;
+}
+
+.list.cdk-drop-list-dragging .box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.my-custom-placeholder {
+  background: $light_color;
+  border: dotted 3px $light_gray;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+

@@ -1,0 +1,83 @@
+<h2>Styles</h2>
+
+<div>
+  <div>
+    <div class="box" [style]="{cursor : 'default'}">
+      <div *ngIf="currentElement" class="center_container">
+
+        <div>
+          <h3>width</h3>
+          <div>
+            <input [(ngModel)]="currentElement.itemData.styles.width">
+            <select [(ngModel)]="currentElement.itemData.styles.widthUnit">
+              <option>px</option>
+              <option>%</option>
+              <option>em</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <h3>height</h3>
+          <div>
+            <input [(ngModel)]="currentElement.itemData.styles.height">
+            <select [(ngModel)]="currentElement.itemData.styles.heightUnit">
+              <option>px</option>
+              <option>%</option>
+              <option>em</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <h3>border</h3>
+          <div>
+            <input [(ngModel)]="currentElement.itemData.styles.border">
+          </div>
+        </div>
+
+        <div>
+          <h3>font size</h3>
+          <div>
+            <input [(ngModel)]="currentElement.itemData.styles.fontSize">
+          </div>
+        </div>
+
+        <div>
+          <h3>weight</h3>
+          <div>
+            <select [(ngModel)]="currentElement.itemData.styles.fontWeight">
+              <option>bold</option>
+              <option>normal</option>
+              <option>bolder</option>
+              <option>lighter</option>
+              <option>100</option>
+              <option>200</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <h3>color</h3>
+          <div>
+            <input [(ngModel)]="currentElement.itemData.styles.color">
+          </div>
+        </div>
+
+
+        <div *ngIf="currentElement.itemData.require !== undefined">
+          <h3>required</h3>
+          <input [(ngModel)]="currentElement.itemData.require"
+                 type="checkbox" id="required-checkbox" name="required">
+          <label for="required-checkbox">is required?</label>
+        </div>
+
+        <div *ngIf="currentElement.itemData.placeholder !== undefined">
+          <h3>placeholder</h3>
+          <input [(ngModel)]="currentElement.itemData.placeholder">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

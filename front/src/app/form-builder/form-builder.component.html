@@ -1,0 +1,42 @@
+<div class="mainContainer">
+  <div cdkDropListGroup>
+    <div class="external-container">
+
+      <div class="block-container">
+        <app-elements [done]="done" (doneEvent)="drop($event)"></app-elements>
+      </div>
+
+      <div class="block-container">
+        <app-change-styles
+          (dropEvent)="drop($event)" (setItemEvent)="setCurrentItem($event)" [styled]="styled">
+        </app-change-styles>
+      </div>
+
+      <div class="block-container">
+        <app-styles [currentElement]="currentElement"></app-styles>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<ng-template #myButtonTemplate>
+  <app-my-button [data]="buttonData"></app-my-button>
+</ng-template>
+
+<ng-template #myTextareaTemplate>
+  <app-my-textarea [data]="textareaData"></app-my-textarea>
+</ng-template>
+
+<ng-template #myCheckboxTemplate>
+  <app-my-checkbox [data]="checkboxData"></app-my-checkbox>
+</ng-template>
+
+<ng-template #myInputTemplate>
+  <app-my-input [data]="inputData"></app-my-input>
+</ng-template>
+
+<ng-template #mySelectTemplate>
+  <app-my-select [data]="selectData"></app-my-select>
+</ng-template>

@@ -1,0 +1,56 @@
+<div class="formContainer">
+  <mat-card [formGroup]="registrationForm">
+
+    <mat-card-header>
+      <mat-card-title>Registration Form</mat-card-title>
+    </mat-card-header>
+
+    <div class="input_class">
+      <app-custom-input
+        formControlName="login"
+        placeholder="Login"
+        name="Your future login"
+        [success]="!!(login?.touched && !login?.errors)"
+        [invalid]="
+        login?.touched && login?.errors?.required ? ('Login' | validation: 'empty') : '' + ' ' +
+        login?.touched && login?.errors?.minlength ? ('Login' | validation: 'min-length') : '' + ' ' +
+        login?.touched && login?.errors?.maxlength ? ('Login' | validation: 'max-length') : ''"
+      ></app-custom-input>
+    </div>
+
+    <div class="input_class">
+      <app-custom-input
+        formControlName="password"
+        placeholder="Password"
+        name="Your future password"
+        type="password"
+        [success]="!!(password?.touched && !password?.errors)"
+        [invalid]="
+        password?.touched && password?.errors?.required ? ('Password' | validation: 'empty') : '' + ' ' +
+        password?.touched && password?.errors?.minlength ? ('Password' | validation: 'min-length') : '' + ' ' +
+        password?.touched && password?.errors?.maxlength ? ('Password' | validation: 'max-length') : ''"
+      ></app-custom-input>
+    </div>
+
+    <div class="input_class">
+      <app-custom-input
+        formControlName="rePassword"
+        placeholder="Password"
+        name="Repeat password"
+        type="password"
+        [success]="!!(rePassword?.touched && !registrationForm.errors?.mismatch && password?.touched && rePassword?.value)"
+        [invalid]="
+        (rePassword?.touched && (registrationForm?.errors?.mismatch || rePassword?.errors)) ? 'Re-password is incorrect' : ''"
+      ></app-custom-input>
+    </div>
+
+    <div *ngIf="serverErrorMessage$ | ngrxPush as error" class="serverErrorMessage">
+      <p>{{ error }}</p>
+    </div>
+
+    <button [disabled]="registrationForm.invalid" (click)="sendDataToServer()" mat-raised-button color="warn">
+      Registration
+    </button>
+
+  </mat-card>
+</div>

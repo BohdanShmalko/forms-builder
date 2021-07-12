@@ -1,0 +1,43 @@
+<div class="formContainer">
+  <mat-card [formGroup]="loginForm">
+
+    <mat-card-header>
+      <mat-card-title>Login Form</mat-card-title>
+    </mat-card-header>
+
+    <div class="input_class">
+      <app-custom-input
+        formControlName="login"
+        placeholder="Login"
+        name="Your login"
+        [success]="!!(login?.touched && !login?.errors)"
+        [invalid]="
+        login?.touched && login?.errors?.required ? ('Login' | validation: 'empty') : '' + ' ' +
+        login?.touched && login?.errors?.minlength ? ('Login' | validation: 'min-length') : '' + ' ' +
+        login?.touched && login?.errors?.maxlength ? ('Login' | validation: 'max-length') : ''"
+      ></app-custom-input>
+    </div>
+
+    <div class="input_class">
+      <app-custom-input
+        formControlName="password"
+        placeholder="Password"
+        name="Your password"
+        type="password"
+        [success]="!!(password?.touched && !password?.errors)"
+        [invalid]="
+        password?.touched && password?.errors?.required ? ('Password' | validation: 'empty') : '' + ' ' +
+        password?.touched && password?.errors?.minlength ? ('Password' | validation: 'min-length') : '' + ' ' +
+        password?.touched && password?.errors?.maxlength ? ('Password' | validation: 'max-length') : ''"
+      ></app-custom-input>
+    </div>
+
+    <div *ngIf="errorMessage$ | ngrxPush as error" class="serverErrorMessage">
+      <p>{{error}}</p>
+    </div>
+
+    <button [disabled]="loginForm?.invalid" (click)="sendDataToServer()" mat-raised-button color="warn">Login</button>
+
+  </mat-card>
+</div>
+
