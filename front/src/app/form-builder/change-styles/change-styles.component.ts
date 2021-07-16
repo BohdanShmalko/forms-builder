@@ -14,9 +14,9 @@ export class ChangeStylesComponent {
   @Output() setItemEvent = new EventEmitter<ItemInDragDrop>();
 
   public toParentDrop(event : CdkDragDrop<ItemInDragDrop[]>): void {
-    this.dropEvent.emit( event )
+    this.dropEvent.emit(event)
   }
   public toParentItem(item : ItemInDragDrop): void {
-    this.setItemEvent.emit( item )
+    this.setItemEvent.emit(item)
   }
 }
