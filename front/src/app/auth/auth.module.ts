@@ -11,7 +11,7 @@ import { routerAuthComponents, RoutingAuthModule } from './auth-routing.module';
 import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-  declarations: [ routerAuthComponents ],
+  declarations: [routerAuthComponents],
   imports: [
     ReactiveFormsModule,
     MyPipesModule,

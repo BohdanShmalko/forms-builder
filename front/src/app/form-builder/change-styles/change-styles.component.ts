@@ -6,7 +6,7 @@ import { ItemInDragDrop } from '../form-builder.component';
 @Component({
   selector: 'app-change-styles',
   templateUrl: './change-styles.component.html',
-  styleUrls: [ '../common.components.scss' ]
+  styleUrls: ['../common.components.scss']
 })
 export class ChangeStylesComponent {
   @Input('styled') styled: ItemInDragDrop[] = [];

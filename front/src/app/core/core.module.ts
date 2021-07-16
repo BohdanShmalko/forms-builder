@@ -17,8 +17,8 @@ import { effects, reducers } from './reducers/index';
     HttpClientModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot( reducers ),
-    EffectsModule.forRoot( effects ),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument( { maxAge: 25, logOnly: environment.production } ),
     StoreRouterConnectingModule.forRoot(),
   ]

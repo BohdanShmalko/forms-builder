@@ -14,26 +14,26 @@ import { AuthState } from '@core/reducers/auth/auth.reducers';
 })
 export class LoginComponent {
 
-  public errorMessage$ = this.storage$.pipe( select( selectLoginError ) );
+  public errorMessage$ = this.storage$.pipe(select(selectLoginError));
 
   public loginForm: FormGroup = this.fb.group({
-    login: [ '', [ ...standardValidators ] ],
-    password: [ '', [ ...standardValidators ] ]
+    login: [ '', [...standardValidators]],
+    password: [ '', [...standardValidators]]
   });
 
   public get login(): AbstractControl | null {
-    return this.loginForm.get( 'login' )
+    return this.loginForm.get('login')
   };
 
   public get password(): AbstractControl | null {
-    return this.loginForm.get( 'password' )
+    return this.loginForm.get('password')
   };
 
   constructor(private fb: FormBuilder, private storage$: Store<AuthState>) {
   }
 
   public sendDataToServer(): void {
-    this.storage$.dispatch(new SendLoginAction( this.loginForm.value ));
+    this.storage$.dispatch(new SendLoginAction(this.loginForm.value));
   }
 
 }

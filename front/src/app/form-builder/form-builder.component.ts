@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ViewContainerRef, TemplateRef, ViewChild, OnInit} from '@angular/core';
-import {CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Portal, TemplatePortal } from '@angular/cdk/portal';
 import { Store } from '@ngrx/store';
 
@@ -53,6 +53,10 @@ export class FormBuilderComponent extends NotAuthCheck implements AfterViewInit,
   public done: ItemInDragDrop[] = [];
   public styled: ItemInDragDrop[] = [];
 
+  constructor(private _viewContainerRef: ViewContainerRef, public store$: Store<AuthState>) {
+    super()
+  }
+
   public drop(event: CdkDragDrop<ItemInDragDrop[]>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -93,10 +97,6 @@ export class FormBuilderComponent extends NotAuthCheck implements AfterViewInit,
     }
   }
 
-  constructor(private _viewContainerRef: ViewContainerRef, public store$: Store< AuthState >) {
-    super()
-  }
-
   private dataFactory(placeholder : string | undefined = undefined, useRequire : boolean = false) : ItemData {
     const styles: Styles = {widthUnit : 'px', heightUnit : 'px'};
     const require: boolean | undefined = useRequire ? false : undefined;
@@ -107,7 +107,7 @@ export class FormBuilderComponent extends NotAuthCheck implements AfterViewInit,
     this.currentElement = item;
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.checkAuth();
   }
 

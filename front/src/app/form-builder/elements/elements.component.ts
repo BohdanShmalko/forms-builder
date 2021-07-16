@@ -6,7 +6,7 @@ import { ItemInDragDrop } from '../form-builder.component';
 @Component({
   selector: 'app-elements',
   templateUrl: './elements.component.html',
-  styleUrls: [ '../common.components.scss' ]
+  styleUrls: ['../common.components.scss']
 })
 export class ElementsComponent {
   @Input('done') done: ItemInDragDrop[] = [];

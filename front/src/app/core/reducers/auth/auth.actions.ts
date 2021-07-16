@@ -25,28 +25,28 @@ export class LoginAction implements Action {
 export class SendLoginAction implements Action {
   readonly type = authActionsType.sendLogin;
 
-  constructor( public payload: UserAuth ) {
+  constructor(public payload: UserAuth) {
   }
 }
 
 export class SendRegistrationAction implements Action {
   readonly type = authActionsType.sendRegistration;
 
-  constructor( public payload: UserAuth ) {
+  constructor(public payload: UserAuth) {
   }
 }
 
 export class SetLoginErrorAction implements Action {
   readonly type = authActionsType.setLoginError;
 
-  constructor( public payload: { message: string } ) {
+  constructor(public payload: { message: string }) {
   }
 }
 
 export class SetRegistrationErrorAction implements Action {
   readonly type = authActionsType.setRegistrationError;
 
-  constructor( public payload: { message: string } ) {
+  constructor(public payload: { message: string }) {
   }
 }
 

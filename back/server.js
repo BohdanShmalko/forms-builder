@@ -12,6 +12,13 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 app.use('/user', api);
+app.use((err, req, res, next) => {
+    if(err.statusCode >= 500){
+        console.log(err)
+        return res.status(500).send({ message : 'Server error' });
+    }
+    next();
+});
 
 const start = async () => {
     try {

@@ -15,12 +15,12 @@ import { standardValidators } from '@shared/validation/standard';
 })
 export class RegistrationComponent {
 
-  public serverErrorMessage$ = this.storage$.pipe( select( selectRegistrationError ) )
+  public serverErrorMessage$ = this.storage$.pipe(select(selectRegistrationError))
 
   public registrationForm: FormGroup = this.fb.group({
-    login: ['', [ ...standardValidators ]],
-    password: ['', [ ...standardValidators ]],
-    rePassword: ['', [ ...standardValidators ]]
+    login: ['', [...standardValidators]],
+    password: ['', [...standardValidators]],
+    rePassword: ['', [...standardValidators]]
   }, {validators: PasswordValidator});
 
   public get login(): AbstractControl | null {
@@ -39,8 +39,8 @@ export class RegistrationComponent {
               private storage$: Store<AuthState>) {
   }
 
-  public sendDataToServer() {
-    this.storage$.dispatch(new SendRegistrationAction( this.registrationForm.value ))
+  public sendDataToServer(): void {
+    this.storage$.dispatch(new SendRegistrationAction(this.registrationForm.value))
   }
 
 }

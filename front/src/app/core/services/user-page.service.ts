@@ -18,7 +18,7 @@ export class UserPageService {
 
   constructor(private http : HttpClient) { }
 
-  getUserInf() : Observable< UserInf > {
-    return this.http.get< UserInf >( this._userInfURL )
+  public getUserInf() : Observable<UserInf> {
+    return this.http.get<UserInf>(this._userInfURL)
   }
 }

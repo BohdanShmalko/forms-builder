@@ -14,7 +14,7 @@ import { LogoutAndDeleteTokenAction } from '@core/reducers/auth/auth.actions';
 })
 export class NavbarComponent {
 
-  public isReqUser$: Observable<boolean> = this.store$.pipe( select( selectIsAuth ) );
+  public isReqUser$: Observable<boolean> = this.store$.pipe(select(selectIsAuth));
 
   constructor(private store$: Store<AuthState>, private _router : Router) {
   }

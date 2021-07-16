@@ -10,12 +10,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild( routes ) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class RoutingUserPageModule {
 }
 
-export type RouterUserPageComponentsType = ( typeof UserPageComponent )[]
+export type RouterUserPageComponentsType = (typeof UserPageComponent)[]
 
-export const routerUserPageComponents: RouterUserPageComponentsType = [ UserPageComponent ];
+export const routerUserPageComponents: RouterUserPageComponentsType = [UserPageComponent];

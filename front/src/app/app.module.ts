@@ -23,6 +23,6 @@ import { SharedModule } from '@shared/shared.module';
     AuthUnloginGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

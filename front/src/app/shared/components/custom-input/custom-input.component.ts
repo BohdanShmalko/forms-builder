@@ -21,12 +21,12 @@ export class CustomInputComponent implements ControlValueAccessor {
   @Input('type') type: string = 'text';
 
   public isFocused: boolean = false
+  public val: string = '';
 
-  setFocus() {
+  public setFocus():void {
     this.isFocused = true
     this.onTouched()
   }
-  public val: string = '';
 
   set value(val : string) {
     if (val !== undefined && this.val !== val) {

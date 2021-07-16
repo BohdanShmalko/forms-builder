@@ -1,11 +1,11 @@
-<div class="formContainer">
+<div class="form-container">
   <mat-card [formGroup]="registrationForm">
 
     <mat-card-header>
       <mat-card-title>Registration Form</mat-card-title>
     </mat-card-header>
 
-    <div class="input_class">
+    <div class="input-class">
       <app-custom-input
         formControlName="login"
         placeholder="Login"
@@ -18,7 +18,7 @@
       ></app-custom-input>
     </div>
 
-    <div class="input_class">
+    <div class="input-class">
       <app-custom-input
         formControlName="password"
         placeholder="Password"
@@ -32,7 +32,7 @@
       ></app-custom-input>
     </div>
 
-    <div class="input_class">
+    <div class="input-class">
       <app-custom-input
         formControlName="rePassword"
         placeholder="Password"
@@ -44,7 +44,7 @@
       ></app-custom-input>
     </div>
 
-    <div *ngIf="serverErrorMessage$ | ngrxPush as error" class="serverErrorMessage">
+    <div *ngIf="serverErrorMessage$ | ngrxPush as error" class="server-error-message">
       <p>{{ error }}</p>
     </div>
 

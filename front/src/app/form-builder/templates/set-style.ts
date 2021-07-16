@@ -1,4 +1,4 @@
-import {ItemData, Styles} from "../form-builder.component";
+import { ItemData, Styles } from '../form-builder.component';
 
 export abstract class SetStyle {
   abstract data : ItemData;

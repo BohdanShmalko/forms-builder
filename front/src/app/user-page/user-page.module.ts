@@ -5,8 +5,8 @@ import { ReactiveComponentModule } from '@ngrx/component';
 import { routerUserPageComponents, RoutingUserPageModule } from './user-page-routing.module';
 
 @NgModule({
-  declarations: [ routerUserPageComponents ],
-  imports: [ RoutingUserPageModule, CommonModule, ReactiveComponentModule ],
+  declarations: [routerUserPageComponents],
+  imports: [RoutingUserPageModule, CommonModule, ReactiveComponentModule],
   providers: []
 })
 export class UserPageModule {

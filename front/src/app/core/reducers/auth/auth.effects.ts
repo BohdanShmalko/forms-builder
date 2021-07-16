@@ -17,6 +17,8 @@ import { AuthService } from '@core/services';
 
 @Injectable()
 export class AuthEffects {
+  constructor(private actions$: Actions, private authService: AuthService, private router: Router) {
+  }
 
   private loginUser$: Observable<LoginAction | SetLoginErrorAction> = createEffect(() =>
     this.actions$.pipe(
@@ -81,7 +83,4 @@ export class AuthEffects {
       })
     )),
   ))
-
-  constructor(private actions$: Actions, private authService: AuthService, private router: Router) {
-  }
 }

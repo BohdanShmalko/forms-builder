@@ -16,6 +16,9 @@ import { UserPageService } from '@core/services';
 @Injectable()
 export class UserEffects {
 
+  constructor(private actions$: Actions, private userService: UserPageService) {
+  }
+
   private getUserData$: Observable<SetUserDataActionType | SetUserErrorActionType> = createEffect(() =>
     this.actions$.pipe(
       ofType(userActionsType.getUserData),
@@ -24,7 +27,4 @@ export class UserEffects {
         catchError((err) => of( SetUserErrorAction({ message: err.message })))
       ))
     ))
-
-  constructor( private actions$: Actions, private userService: UserPageService ) {
-  }
 }

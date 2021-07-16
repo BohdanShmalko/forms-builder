@@ -1,6 +1,6 @@
 @import "variables";
 
-.mainContainer {
+.main-container {
   padding: 20px;
 }
 
@@ -20,9 +20,9 @@
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 4px;
-  box-shadow: 0 5px 5px -3px $black_opacity_1,
-  0 8px 10px 1px $black_opacity_2,
-  0 3px 14px 2px $black_opacity_3;
+  box-shadow: 0 5px 5px -3px $black-opacity-1,
+  0 8px 10px 1px $black-opacity-2,
+  0 3px 14px 2px $black-opacity-3;
 }
 
 .cdk-drag-animating {
@@ -30,7 +30,7 @@
 }
 
 .style-setter-container {
-  background: $item_background;
+  background: $item-background;
 }
 
 .central-container {

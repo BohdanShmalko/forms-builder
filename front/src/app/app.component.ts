@@ -11,7 +11,7 @@ import { CheckAuthAction } from '@core/reducers/auth/auth.actions';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private store$: Store< AuthState >) {}
+  constructor(private store$: Store<AuthState>) {}
 
   ngOnInit() {
     this.store$.dispatch(new CheckAuthAction());

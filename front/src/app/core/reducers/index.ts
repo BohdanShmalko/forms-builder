@@ -10,13 +10,13 @@ import { AuthActions } from '@core/reducers/auth/auth.actions';
 export type ActionsType = UserActions & AuthActions
 
 export interface State {
-  [ authNode ]: AuthState
-  [ userNode ]: UserState
+  [authNode]: AuthState
+  [userNode]: UserState
 };
 
 export const reducers : ActionReducerMap<State, ActionsType> = {
-  [ authNode ]: authReducer,
-  [ userNode ]: userReducer
+  [authNode]: authReducer,
+  [userNode]: userReducer
 };
 
-export const effects = [ AuthEffects, UserEffects ];
+export const effects = [AuthEffects, UserEffects];

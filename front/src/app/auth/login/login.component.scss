@@ -1,6 +1,6 @@
-@import "variables";
+@import 'variables';
 
-.formContainer {
+.form-container {
   padding: 100px;
   display: flex;
   justify-content: center;
@@ -12,11 +12,11 @@
   }
 }
 
-.serverErrorMessage {
-  color: $errorColor;
+.server-error-message {
+  color: $error-color;
   font-size: 12px;
 }
 
-.input_class {
+.input-class {
   margin-bottom: 15px;
 }

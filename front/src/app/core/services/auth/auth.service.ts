@@ -26,34 +26,34 @@ export class AuthService {
   private _checkTokenURL = this._basicURL + 'check/token';
   private _TOKEN = 'token';
 
-  constructor( private http: HttpClient ) {
+  constructor(private http: HttpClient) {
   }
 
-  registrationUser( user: UserAuth ): Observable< Token > {
-    return this.http.post< Token >( this._registrationURL, user )
-  }
-
-  loginUser( user: UserAuth ): Observable< Token > {
-    return this.http.post< Token >( this._loginURL, user )
-  }
-
-  checkValidToken(): Observable< TokenValidation > {
-    return this.http.get< TokenValidation >(this._checkTokenURL)
-  }
-
-  storeToken( token: string): void {
-    localStorage.setItem(this._TOKEN, token)
-  }
-
-  get isLoggedIn(): boolean {
+  public get isLoggedIn(): boolean {
     return !!localStorage.getItem(this._TOKEN)
   }
 
-  get getToken(): string | null {
+  public get getToken(): string | null {
     return localStorage.getItem(this._TOKEN)
   }
 
-  logoutUser(): void {
+  public registrationUser( user: UserAuth ): Observable< Token > {
+    return this.http.post< Token >( this._registrationURL, user )
+  }
+
+  public loginUser( user: UserAuth ): Observable< Token > {
+    return this.http.post< Token >( this._loginURL, user )
+  }
+
+  public checkValidToken(): Observable< TokenValidation > {
+    return this.http.get< TokenValidation >(this._checkTokenURL)
+  }
+
+  public storeToken( token: string): void {
+    localStorage.setItem(this._TOKEN, token)
+  }
+
+  public logoutUser(): void {
     localStorage.removeItem(this._TOKEN)
   }
 }

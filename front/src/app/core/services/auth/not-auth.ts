@@ -6,7 +6,7 @@ import { CheckValidTokenAction } from '../../reducers/auth/auth.actions';
 export abstract class NotAuthCheck {
   abstract store$: Store<AuthState>;
 
-  checkAuth(): void {
+  public checkAuth(): void {
     this.store$.dispatch(new CheckValidTokenAction());
   }
 }
