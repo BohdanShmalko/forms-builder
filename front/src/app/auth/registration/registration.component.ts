@@ -15,7 +15,7 @@ import { standardValidators } from '@shared/validation/standard';
 })
 export class RegistrationComponent {
 
-  public serverErrorMessage$ = this.storage$.pipe(select(selectRegistrationError))
+  public serverErrorMessage$ = this.storage.pipe(select(selectRegistrationError))
 
   public registrationForm: FormGroup = this.fb.group({
     login: ['', [...standardValidators]],
@@ -36,11 +36,11 @@ export class RegistrationComponent {
   }
 
   constructor(private fb: FormBuilder,
-              private storage$: Store<AuthState>) {
+              private storage: Store<AuthState>) {
   }
 
   public sendDataToServer(): void {
-    this.storage$.dispatch(new SendRegistrationAction(this.registrationForm.value))
+    this.storage.dispatch(new SendRegistrationAction(this.registrationForm.value))
   }
 
 }
